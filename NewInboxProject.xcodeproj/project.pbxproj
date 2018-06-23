@@ -1,0 +1,1020 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA034BA520BE4A27009ADCD2 /* InboxCollectionViewUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = BA034BA420BE4A27009ADCD2 /* InboxCollectionViewUpdater.m */; };
+		BA4E54C520BCF04000380F56 /* TSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E54C320BCF04000380F56 /* TSHelper.m */; };
+		BA6547AD20DA3B9600FDB314 /* InboxLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */; };
+		BA8FFCF520BE86A300233A32 /* InboxDataSourceState.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */; };
+		BA938E0C20B7F68900CCBE90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E0B20B7F68900CCBE90 /* AppDelegate.m */; };
+		BA938E1420B7F68900CCBE90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA938E1320B7F68900CCBE90 /* Assets.xcassets */; };
+		BA938E1720B7F68900CCBE90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA938E1520B7F68900CCBE90 /* LaunchScreen.storyboard */; };
+		BA938E1A20B7F68900CCBE90 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E1920B7F68900CCBE90 /* main.m */; };
+		BA938E2420B7F68900CCBE90 /* NewInboxProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E2320B7F68900CCBE90 /* NewInboxProjectTests.m */; };
+		BA938E2F20B7F68900CCBE90 /* NewInboxProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E2E20B7F68900CCBE90 /* NewInboxProjectUITests.m */; };
+		BA938E4120B7F6A100CCBE90 /* InboxCollectionViewCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938E3E20B7F6A100CCBE90 /* InboxCollectionViewCell.mm */; };
+		BA938E4220B7F6A100CCBE90 /* InboxDataSourceItem.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4020B7F6A100CCBE90 /* InboxDataSourceItem.mm */; };
+		BA938E9220B7F6A900CCBE90 /* AAPLAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4520B7F6A900CCBE90 /* AAPLAction.m */; };
+		BA938E9320B7F6A900CCBE90 /* AAPLContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4720B7F6A900CCBE90 /* AAPLContentLoading.m */; };
+		BA938E9420B7F6A900CCBE90 /* AAPLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4920B7F6A900CCBE90 /* AAPLDebug.m */; };
+		BA938E9520B7F6A900CCBE90 /* AAPLStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4C20B7F6A900CCBE90 /* AAPLStateMachine.m */; };
+		BA938E9620B7F6A900CCBE90 /* AAPLTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E4E20B7F6A900CCBE90 /* AAPLTheme.m */; };
+		BA938E9720B7F6A900CCBE90 /* AAPLDataSource+Headers.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5120B7F6A900CCBE90 /* AAPLDataSource+Headers.m */; };
+		BA938E9820B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5320B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.m */; };
+		BA938E9920B7F6A900CCBE90 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5520B7F6A900CCBE90 /* UIView+Helpers.m */; };
+		BA938E9A20B7F6A900CCBE90 /* AAPLBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5820B7F6A900CCBE90 /* AAPLBasicDataSource.m */; };
+		BA938E9B20B7F6A900CCBE90 /* AAPLComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5A20B7F6A900CCBE90 /* AAPLComposedDataSource.m */; };
+		BA938E9C20B7F6A900CCBE90 /* AAPLDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5C20B7F6A900CCBE90 /* AAPLDataSource.m */; };
+		BA938E9D20B7F6A900CCBE90 /* AAPLDataSourceMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E5F20B7F6A900CCBE90 /* AAPLDataSourceMapping.m */; };
+		BA938E9E20B7F6A900CCBE90 /* AAPLDataSourceMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6120B7F6A900CCBE90 /* AAPLDataSourceMetrics.m */; };
+		BA938E9F20B7F6A900CCBE90 /* AAPLKeyValueDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6420B7F6A900CCBE90 /* AAPLKeyValueDataSource.m */; };
+		BA938EA020B7F6A900CCBE90 /* AAPLSegmentedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6620B7F6A900CCBE90 /* AAPLSegmentedDataSource.m */; };
+		BA938EA120B7F6A900CCBE90 /* AAPLTextValueDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6820B7F6A900CCBE90 /* AAPLTextValueDataSource.m */; };
+		BA938EA220B7F6A900CCBE90 /* AAPLCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6B20B7F6A900CCBE90 /* AAPLCollectionViewLayout.m */; };
+		BA938EA320B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E6D20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m */; };
+		BA938EA420B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7020B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.m */; };
+		BA938EA520B7F6A900CCBE90 /* AAPLLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7320B7F6A900CCBE90 /* AAPLLayoutMetrics.m */; };
+		BA938EA620B7F6A900CCBE90 /* AAPLShadowRegistrar.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7620B7F6A900CCBE90 /* AAPLShadowRegistrar.m */; };
+		BA938EA720B7F6A900CCBE90 /* AAPLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7920B7F6A900CCBE90 /* AAPLCollectionViewController.m */; };
+		BA938EA820B7F6A900CCBE90 /* AAPLSwipeToEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7B20B7F6A900CCBE90 /* AAPLSwipeToEditController.m */; };
+		BA938EA920B7F6A900CCBE90 /* AAPLBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E7E20B7F6A900CCBE90 /* AAPLBasicCell.m */; };
+		BA938EAA20B7F6A900CCBE90 /* AAPLCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8020B7F6A900CCBE90 /* AAPLCollectionViewCell.m */; };
+		BA938EAB20B7F6A900CCBE90 /* AAPLHairlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8320B7F6A900CCBE90 /* AAPLHairlineView.m */; };
+		BA938EAC20B7F6A900CCBE90 /* AAPLKeyValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8520B7F6A900CCBE90 /* AAPLKeyValueCell.m */; };
+		BA938EAD20B7F6A900CCBE90 /* AAPLLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8720B7F6A900CCBE90 /* AAPLLabel.m */; };
+		BA938EAE20B7F6A900CCBE90 /* AAPLPinnableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8920B7F6A900CCBE90 /* AAPLPinnableHeaderView.m */; };
+		BA938EAF20B7F6A900CCBE90 /* AAPLPlaceholderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8B20B7F6A900CCBE90 /* AAPLPlaceholderView.m */; };
+		BA938EB020B7F6A900CCBE90 /* AAPLSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8D20B7F6A900CCBE90 /* AAPLSectionHeaderView.m */; };
+		BA938EB120B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E8F20B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m */; };
+		BA938EB220B7F6A900CCBE90 /* AAPLTextValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E9120B7F6A900CCBE90 /* AAPLTextValueCell.m */; };
+		BA938EBA20B7FA7000CCBE90 /* InboxCollectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938EB920B7FA7000CCBE90 /* InboxCollectionViewController.mm */; };
+		BA938EC120B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC020B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm */; };
+		BA938EC420B8037400CCBE90 /* InboxDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */; };
+		BA938EC620B8060900CCBE90 /* chat.json in Resources */ = {isa = PBXBuildFile; fileRef = BA938EC520B8060900CCBE90 /* chat.json */; };
+		BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */; };
+		BA9C6AEE20BD424300692BDA /* InboxDataSourceItemsDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9C6AED20BD424300692BDA /* InboxDataSourceItemsDiff.m */; };
+		BAA5F0FC20BD4CC000F85816 /* IGListBatchUpdateData.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0E220BD4CC000F85816 /* IGListBatchUpdateData.mm */; };
+		BAA5F0FD20BD4CC000F85816 /* IGListDiff.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0E520BD4CC000F85816 /* IGListDiff.mm */; };
+		BAA5F0FE20BD4CC000F85816 /* IGListIndexPathResult.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0EA20BD4CC000F85816 /* IGListIndexPathResult.m */; };
+		BAA5F0FF20BD4CC000F85816 /* IGListIndexSetResult.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0EC20BD4CC000F85816 /* IGListIndexSetResult.m */; };
+		BAA5F10020BD4CC000F85816 /* IGListMoveIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0EF20BD4CC000F85816 /* IGListMoveIndex.m */; };
+		BAA5F10120BD4CC000F85816 /* IGListMoveIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0F120BD4CC000F85816 /* IGListMoveIndexPath.m */; };
+		BAA5F10220BD4CC000F85816 /* NSNumber+IGListDiffable.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0F920BD4CC000F85816 /* NSNumber+IGListDiffable.m */; };
+		BAA5F10320BD4CC000F85816 /* NSString+IGListDiffable.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0FB20BD4CC000F85816 /* NSString+IGListDiffable.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA938E2020B7F68900CCBE90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA938DFF20B7F68900CCBE90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA938E0620B7F68900CCBE90;
+			remoteInfo = NewInboxProject;
+		};
+		BA938E2B20B7F68900CCBE90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA938DFF20B7F68900CCBE90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA938E0620B7F68900CCBE90;
+			remoteInfo = NewInboxProject;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA034BA320BE4A27009ADCD2 /* InboxCollectionViewUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewUpdater.h; sourceTree = "<group>"; };
+		BA034BA420BE4A27009ADCD2 /* InboxCollectionViewUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxCollectionViewUpdater.m; sourceTree = "<group>"; };
+		BA4E54C320BCF04000380F56 /* TSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHelper.m; sourceTree = "<group>"; };
+		BA4E54C420BCF04000380F56 /* TSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSHelper.h; sourceTree = "<group>"; };
+		BA6547AB20DA3B9600FDB314 /* InboxLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxLoadingView.h; sourceTree = "<group>"; };
+		BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxLoadingView.m; sourceTree = "<group>"; };
+		BA8FFCF320BE86A300233A32 /* InboxDataSourceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceState.h; sourceTree = "<group>"; };
+		BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxDataSourceState.m; sourceTree = "<group>"; };
+		BA938E0720B7F68900CCBE90 /* NewInboxProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewInboxProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA938E0A20B7F68900CCBE90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BA938E0B20B7F68900CCBE90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BA938E1320B7F68900CCBE90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA938E1620B7F68900CCBE90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA938E1820B7F68900CCBE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA938E1920B7F68900CCBE90 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BA938E1F20B7F68900CCBE90 /* NewInboxProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewInboxProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA938E2320B7F68900CCBE90 /* NewInboxProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInboxProjectTests.m; sourceTree = "<group>"; };
+		BA938E2520B7F68900CCBE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA938E2A20B7F68900CCBE90 /* NewInboxProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewInboxProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA938E2E20B7F68900CCBE90 /* NewInboxProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewInboxProjectUITests.m; sourceTree = "<group>"; };
+		BA938E3020B7F68900CCBE90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA938E3D20B7F6A100CCBE90 /* InboxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewCell.h; sourceTree = "<group>"; };
+		BA938E3E20B7F6A100CCBE90 /* InboxCollectionViewCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxCollectionViewCell.mm; sourceTree = "<group>"; };
+		BA938E3F20B7F6A100CCBE90 /* InboxDataSourceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceItem.h; sourceTree = "<group>"; };
+		BA938E4020B7F6A100CCBE90 /* InboxDataSourceItem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxDataSourceItem.mm; sourceTree = "<group>"; };
+		BA938E4420B7F6A900CCBE90 /* AAPLAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAction.h; sourceTree = "<group>"; };
+		BA938E4520B7F6A900CCBE90 /* AAPLAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAction.m; sourceTree = "<group>"; };
+		BA938E4620B7F6A900CCBE90 /* AAPLContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLContentLoading.h; sourceTree = "<group>"; };
+		BA938E4720B7F6A900CCBE90 /* AAPLContentLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLContentLoading.m; sourceTree = "<group>"; };
+		BA938E4820B7F6A900CCBE90 /* AAPLDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDebug.h; sourceTree = "<group>"; };
+		BA938E4920B7F6A900CCBE90 /* AAPLDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDebug.m; sourceTree = "<group>"; };
+		BA938E4A20B7F6A900CCBE90 /* AAPLLocalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLocalization.h; sourceTree = "<group>"; };
+		BA938E4B20B7F6A900CCBE90 /* AAPLStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLStateMachine.h; sourceTree = "<group>"; };
+		BA938E4C20B7F6A900CCBE90 /* AAPLStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLStateMachine.m; sourceTree = "<group>"; };
+		BA938E4D20B7F6A900CCBE90 /* AAPLTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLTheme.h; sourceTree = "<group>"; };
+		BA938E4E20B7F6A900CCBE90 /* AAPLTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLTheme.m; sourceTree = "<group>"; };
+		BA938E5020B7F6A900CCBE90 /* AAPLDataSource+Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AAPLDataSource+Headers.h"; sourceTree = "<group>"; };
+		BA938E5120B7F6A900CCBE90 /* AAPLDataSource+Headers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AAPLDataSource+Headers.m"; sourceTree = "<group>"; };
+		BA938E5220B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+SupplementaryViews.h"; sourceTree = "<group>"; };
+		BA938E5320B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+SupplementaryViews.m"; sourceTree = "<group>"; };
+		BA938E5420B7F6A900CCBE90 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		BA938E5520B7F6A900CCBE90 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		BA938E5720B7F6A900CCBE90 /* AAPLBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicDataSource.h; sourceTree = "<group>"; };
+		BA938E5820B7F6A900CCBE90 /* AAPLBasicDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLBasicDataSource.m; sourceTree = "<group>"; };
+		BA938E5920B7F6A900CCBE90 /* AAPLComposedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLComposedDataSource.h; sourceTree = "<group>"; };
+		BA938E5A20B7F6A900CCBE90 /* AAPLComposedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLComposedDataSource.m; sourceTree = "<group>"; };
+		BA938E5B20B7F6A900CCBE90 /* AAPLDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSource.h; sourceTree = "<group>"; };
+		BA938E5C20B7F6A900CCBE90 /* AAPLDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDataSource.m; sourceTree = "<group>"; };
+		BA938E5D20B7F6A900CCBE90 /* AAPLDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSource_Private.h; sourceTree = "<group>"; };
+		BA938E5E20B7F6A900CCBE90 /* AAPLDataSourceMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSourceMapping.h; sourceTree = "<group>"; };
+		BA938E5F20B7F6A900CCBE90 /* AAPLDataSourceMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDataSourceMapping.m; sourceTree = "<group>"; };
+		BA938E6020B7F6A900CCBE90 /* AAPLDataSourceMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSourceMetrics.h; sourceTree = "<group>"; };
+		BA938E6120B7F6A900CCBE90 /* AAPLDataSourceMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLDataSourceMetrics.m; sourceTree = "<group>"; };
+		BA938E6220B7F6A900CCBE90 /* AAPLDataSourceMetrics_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLDataSourceMetrics_Private.h; sourceTree = "<group>"; };
+		BA938E6320B7F6A900CCBE90 /* AAPLKeyValueDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLKeyValueDataSource.h; sourceTree = "<group>"; };
+		BA938E6420B7F6A900CCBE90 /* AAPLKeyValueDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLKeyValueDataSource.m; sourceTree = "<group>"; };
+		BA938E6520B7F6A900CCBE90 /* AAPLSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSegmentedDataSource.h; sourceTree = "<group>"; };
+		BA938E6620B7F6A900CCBE90 /* AAPLSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSegmentedDataSource.m; sourceTree = "<group>"; };
+		BA938E6720B7F6A900CCBE90 /* AAPLTextValueDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLTextValueDataSource.h; sourceTree = "<group>"; };
+		BA938E6820B7F6A900CCBE90 /* AAPLTextValueDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLTextValueDataSource.m; sourceTree = "<group>"; };
+		BA938E6A20B7F6A900CCBE90 /* AAPLCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewLayout.h; sourceTree = "<group>"; };
+		BA938E6B20B7F6A900CCBE90 /* AAPLCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewLayout.m; sourceTree = "<group>"; };
+		BA938E6C20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewLayout_Internal.h; sourceTree = "<group>"; };
+		BA938E6D20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewLayout_Internal.m; sourceTree = "<group>"; };
+		BA938E6E20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewLayout_Private.h; sourceTree = "<group>"; };
+		BA938E6F20B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewLayoutAttributes.h; sourceTree = "<group>"; };
+		BA938E7020B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewLayoutAttributes.m; sourceTree = "<group>"; };
+		BA938E7120B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewLayoutAttributes_Private.h; sourceTree = "<group>"; };
+		BA938E7220B7F6A900CCBE90 /* AAPLLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLayoutMetrics.h; sourceTree = "<group>"; };
+		BA938E7320B7F6A900CCBE90 /* AAPLLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLLayoutMetrics.m; sourceTree = "<group>"; };
+		BA938E7420B7F6A900CCBE90 /* AAPLLayoutMetrics_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLayoutMetrics_Private.h; sourceTree = "<group>"; };
+		BA938E7520B7F6A900CCBE90 /* AAPLShadowRegistrar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLShadowRegistrar.h; sourceTree = "<group>"; };
+		BA938E7620B7F6A900CCBE90 /* AAPLShadowRegistrar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLShadowRegistrar.m; sourceTree = "<group>"; };
+		BA938E7820B7F6A900CCBE90 /* AAPLCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewController.h; sourceTree = "<group>"; };
+		BA938E7920B7F6A900CCBE90 /* AAPLCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewController.m; sourceTree = "<group>"; };
+		BA938E7A20B7F6A900CCBE90 /* AAPLSwipeToEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSwipeToEditController.h; sourceTree = "<group>"; };
+		BA938E7B20B7F6A900CCBE90 /* AAPLSwipeToEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSwipeToEditController.m; sourceTree = "<group>"; };
+		BA938E7D20B7F6A900CCBE90 /* AAPLBasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLBasicCell.h; sourceTree = "<group>"; };
+		BA938E7E20B7F6A900CCBE90 /* AAPLBasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLBasicCell.m; sourceTree = "<group>"; };
+		BA938E7F20B7F6A900CCBE90 /* AAPLCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell.h; sourceTree = "<group>"; };
+		BA938E8020B7F6A900CCBE90 /* AAPLCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLCollectionViewCell.m; sourceTree = "<group>"; };
+		BA938E8120B7F6A900CCBE90 /* AAPLCollectionViewCell_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLCollectionViewCell_Private.h; sourceTree = "<group>"; };
+		BA938E8220B7F6A900CCBE90 /* AAPLHairlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLHairlineView.h; sourceTree = "<group>"; };
+		BA938E8320B7F6A900CCBE90 /* AAPLHairlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLHairlineView.m; sourceTree = "<group>"; };
+		BA938E8420B7F6A900CCBE90 /* AAPLKeyValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLKeyValueCell.h; sourceTree = "<group>"; };
+		BA938E8520B7F6A900CCBE90 /* AAPLKeyValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLKeyValueCell.m; sourceTree = "<group>"; };
+		BA938E8620B7F6A900CCBE90 /* AAPLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLLabel.h; sourceTree = "<group>"; };
+		BA938E8720B7F6A900CCBE90 /* AAPLLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLLabel.m; sourceTree = "<group>"; };
+		BA938E8820B7F6A900CCBE90 /* AAPLPinnableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPinnableHeaderView.h; sourceTree = "<group>"; };
+		BA938E8920B7F6A900CCBE90 /* AAPLPinnableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPinnableHeaderView.m; sourceTree = "<group>"; };
+		BA938E8A20B7F6A900CCBE90 /* AAPLPlaceholderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlaceholderView.h; sourceTree = "<group>"; };
+		BA938E8B20B7F6A900CCBE90 /* AAPLPlaceholderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPlaceholderView.m; sourceTree = "<group>"; };
+		BA938E8C20B7F6A900CCBE90 /* AAPLSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSectionHeaderView.h; sourceTree = "<group>"; };
+		BA938E8D20B7F6A900CCBE90 /* AAPLSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSectionHeaderView.m; sourceTree = "<group>"; };
+		BA938E8E20B7F6A900CCBE90 /* AAPLSegmentedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLSegmentedHeaderView.h; sourceTree = "<group>"; };
+		BA938E8F20B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLSegmentedHeaderView.m; sourceTree = "<group>"; };
+		BA938E9020B7F6A900CCBE90 /* AAPLTextValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLTextValueCell.h; sourceTree = "<group>"; };
+		BA938E9120B7F6A900CCBE90 /* AAPLTextValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLTextValueCell.m; sourceTree = "<group>"; };
+		BA938EB820B7FA7000CCBE90 /* InboxCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewController.h; sourceTree = "<group>"; };
+		BA938EB920B7FA7000CCBE90 /* InboxCollectionViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxCollectionViewController.mm; sourceTree = "<group>"; };
+		BA938EBF20B7FB0D00CCBE90 /* InboxCollectionViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewDataSource.h; sourceTree = "<group>"; };
+		BA938EC020B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxCollectionViewDataSource.mm; sourceTree = "<group>"; };
+		BA938EC220B8037400CCBE90 /* InboxDataLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataLoader.h; sourceTree = "<group>"; };
+		BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxDataLoader.mm; sourceTree = "<group>"; };
+		BA938EC520B8060900CCBE90 /* chat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chat.json; sourceTree = "<group>"; };
+		BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewCellItem.h; sourceTree = "<group>"; };
+		BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxCollectionViewCellItem.m; sourceTree = "<group>"; };
+		BA9C6AEC20BD424300692BDA /* InboxDataSourceItemsDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceItemsDiff.h; sourceTree = "<group>"; };
+		BA9C6AED20BD424300692BDA /* InboxDataSourceItemsDiff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxDataSourceItemsDiff.m; sourceTree = "<group>"; };
+		BAA5F0E020BD4CC000F85816 /* IGListAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListAssert.h; sourceTree = "<group>"; };
+		BAA5F0E120BD4CC000F85816 /* IGListBatchUpdateData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListBatchUpdateData.h; sourceTree = "<group>"; };
+		BAA5F0E220BD4CC000F85816 /* IGListBatchUpdateData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IGListBatchUpdateData.mm; sourceTree = "<group>"; };
+		BAA5F0E320BD4CC000F85816 /* IGListCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListCompatibility.h; sourceTree = "<group>"; };
+		BAA5F0E420BD4CC000F85816 /* IGListDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListDiff.h; sourceTree = "<group>"; };
+		BAA5F0E520BD4CC000F85816 /* IGListDiff.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = IGListDiff.mm; sourceTree = "<group>"; };
+		BAA5F0E620BD4CC000F85816 /* IGListDiffable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListDiffable.h; sourceTree = "<group>"; };
+		BAA5F0E720BD4CC000F85816 /* IGListDiffKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListDiffKit.h; sourceTree = "<group>"; };
+		BAA5F0E820BD4CC000F85816 /* IGListExperiments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListExperiments.h; sourceTree = "<group>"; };
+		BAA5F0E920BD4CC000F85816 /* IGListIndexPathResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListIndexPathResult.h; sourceTree = "<group>"; };
+		BAA5F0EA20BD4CC000F85816 /* IGListIndexPathResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGListIndexPathResult.m; sourceTree = "<group>"; };
+		BAA5F0EB20BD4CC000F85816 /* IGListIndexSetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListIndexSetResult.h; sourceTree = "<group>"; };
+		BAA5F0EC20BD4CC000F85816 /* IGListIndexSetResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGListIndexSetResult.m; sourceTree = "<group>"; };
+		BAA5F0ED20BD4CC000F85816 /* IGListMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListMacros.h; sourceTree = "<group>"; };
+		BAA5F0EE20BD4CC000F85816 /* IGListMoveIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListMoveIndex.h; sourceTree = "<group>"; };
+		BAA5F0EF20BD4CC000F85816 /* IGListMoveIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGListMoveIndex.m; sourceTree = "<group>"; };
+		BAA5F0F020BD4CC000F85816 /* IGListMoveIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListMoveIndexPath.h; sourceTree = "<group>"; };
+		BAA5F0F120BD4CC000F85816 /* IGListMoveIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGListMoveIndexPath.m; sourceTree = "<group>"; };
+		BAA5F0F320BD4CC000F85816 /* IGListArrayUtilsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListArrayUtilsInternal.h; sourceTree = "<group>"; };
+		BAA5F0F420BD4CC000F85816 /* IGListIndexPathResultInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListIndexPathResultInternal.h; sourceTree = "<group>"; };
+		BAA5F0F520BD4CC000F85816 /* IGListIndexSetResultInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListIndexSetResultInternal.h; sourceTree = "<group>"; };
+		BAA5F0F620BD4CC000F85816 /* IGListMoveIndexInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListMoveIndexInternal.h; sourceTree = "<group>"; };
+		BAA5F0F720BD4CC000F85816 /* IGListMoveIndexPathInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListMoveIndexPathInternal.h; sourceTree = "<group>"; };
+		BAA5F0F820BD4CC000F85816 /* NSNumber+IGListDiffable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+IGListDiffable.h"; sourceTree = "<group>"; };
+		BAA5F0F920BD4CC000F85816 /* NSNumber+IGListDiffable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+IGListDiffable.m"; sourceTree = "<group>"; };
+		BAA5F0FA20BD4CC000F85816 /* NSString+IGListDiffable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IGListDiffable.h"; sourceTree = "<group>"; };
+		BAA5F0FB20BD4CC000F85816 /* NSString+IGListDiffable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IGListDiffable.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA938E0420B7F68900CCBE90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E1C20B7F68900CCBE90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E2720B7F68900CCBE90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA4E54C220BCEFF900380F56 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BA4E54C420BCF04000380F56 /* TSHelper.h */,
+				BA4E54C320BCF04000380F56 /* TSHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		BA6547AA20DA3B4F00FDB314 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA6547AB20DA3B9600FDB314 /* InboxLoadingView.h */,
+				BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA938DFE20B7F68900CCBE90 = {
+			isa = PBXGroup;
+			children = (
+				BA938E0920B7F68900CCBE90 /* NewInboxProject */,
+				BA938E2220B7F68900CCBE90 /* NewInboxProjectTests */,
+				BA938E2D20B7F68900CCBE90 /* NewInboxProjectUITests */,
+				BA938E0820B7F68900CCBE90 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA938E0820B7F68900CCBE90 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E0720B7F68900CCBE90 /* NewInboxProject.app */,
+				BA938E1F20B7F68900CCBE90 /* NewInboxProjectTests.xctest */,
+				BA938E2A20B7F68900CCBE90 /* NewInboxProjectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA938E0920B7F68900CCBE90 /* NewInboxProject */ = {
+			isa = PBXGroup;
+			children = (
+				BAA5F0DE20BD4CA300F85816 /* IGListKit */,
+				BA938E4320B7F6A900CCBE90 /* Framework */,
+				BA938EB320B7F6D800CCBE90 /* Application */,
+				BA938E0A20B7F68900CCBE90 /* AppDelegate.h */,
+				BA938E0B20B7F68900CCBE90 /* AppDelegate.m */,
+				BA938E1320B7F68900CCBE90 /* Assets.xcassets */,
+				BA938E1520B7F68900CCBE90 /* LaunchScreen.storyboard */,
+				BA938E1820B7F68900CCBE90 /* Info.plist */,
+				BA938E1920B7F68900CCBE90 /* main.m */,
+				BA938EC520B8060900CCBE90 /* chat.json */,
+			);
+			path = NewInboxProject;
+			sourceTree = "<group>";
+		};
+		BA938E2220B7F68900CCBE90 /* NewInboxProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E2320B7F68900CCBE90 /* NewInboxProjectTests.m */,
+				BA938E2520B7F68900CCBE90 /* Info.plist */,
+			);
+			path = NewInboxProjectTests;
+			sourceTree = "<group>";
+		};
+		BA938E2D20B7F68900CCBE90 /* NewInboxProjectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E2E20B7F68900CCBE90 /* NewInboxProjectUITests.m */,
+				BA938E3020B7F68900CCBE90 /* Info.plist */,
+			);
+			path = NewInboxProjectUITests;
+			sourceTree = "<group>";
+		};
+		BA938E3C20B7F6A100CCBE90 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E3D20B7F6A100CCBE90 /* InboxCollectionViewCell.h */,
+				BA938E3E20B7F6A100CCBE90 /* InboxCollectionViewCell.mm */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BA938E4320B7F6A900CCBE90 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E4420B7F6A900CCBE90 /* AAPLAction.h */,
+				BA938E4520B7F6A900CCBE90 /* AAPLAction.m */,
+				BA938E4620B7F6A900CCBE90 /* AAPLContentLoading.h */,
+				BA938E4720B7F6A900CCBE90 /* AAPLContentLoading.m */,
+				BA938E4820B7F6A900CCBE90 /* AAPLDebug.h */,
+				BA938E4920B7F6A900CCBE90 /* AAPLDebug.m */,
+				BA938E4A20B7F6A900CCBE90 /* AAPLLocalization.h */,
+				BA938E4B20B7F6A900CCBE90 /* AAPLStateMachine.h */,
+				BA938E4C20B7F6A900CCBE90 /* AAPLStateMachine.m */,
+				BA938E4D20B7F6A900CCBE90 /* AAPLTheme.h */,
+				BA938E4E20B7F6A900CCBE90 /* AAPLTheme.m */,
+				BA938E4F20B7F6A900CCBE90 /* Categories */,
+				BA938E5620B7F6A900CCBE90 /* DataSources */,
+				BA938E6920B7F6A900CCBE90 /* Layouts */,
+				BA938E7720B7F6A900CCBE90 /* ViewControllers */,
+				BA938E7C20B7F6A900CCBE90 /* Views */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		BA938E4F20B7F6A900CCBE90 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E5020B7F6A900CCBE90 /* AAPLDataSource+Headers.h */,
+				BA938E5120B7F6A900CCBE90 /* AAPLDataSource+Headers.m */,
+				BA938E5220B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.h */,
+				BA938E5320B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.m */,
+				BA938E5420B7F6A900CCBE90 /* UIView+Helpers.h */,
+				BA938E5520B7F6A900CCBE90 /* UIView+Helpers.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		BA938E5620B7F6A900CCBE90 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E5720B7F6A900CCBE90 /* AAPLBasicDataSource.h */,
+				BA938E5820B7F6A900CCBE90 /* AAPLBasicDataSource.m */,
+				BA938E5920B7F6A900CCBE90 /* AAPLComposedDataSource.h */,
+				BA938E5A20B7F6A900CCBE90 /* AAPLComposedDataSource.m */,
+				BA938E5B20B7F6A900CCBE90 /* AAPLDataSource.h */,
+				BA938E5C20B7F6A900CCBE90 /* AAPLDataSource.m */,
+				BA938E5D20B7F6A900CCBE90 /* AAPLDataSource_Private.h */,
+				BA938E5E20B7F6A900CCBE90 /* AAPLDataSourceMapping.h */,
+				BA938E5F20B7F6A900CCBE90 /* AAPLDataSourceMapping.m */,
+				BA938E6020B7F6A900CCBE90 /* AAPLDataSourceMetrics.h */,
+				BA938E6120B7F6A900CCBE90 /* AAPLDataSourceMetrics.m */,
+				BA938E6220B7F6A900CCBE90 /* AAPLDataSourceMetrics_Private.h */,
+				BA938E6320B7F6A900CCBE90 /* AAPLKeyValueDataSource.h */,
+				BA938E6420B7F6A900CCBE90 /* AAPLKeyValueDataSource.m */,
+				BA938E6520B7F6A900CCBE90 /* AAPLSegmentedDataSource.h */,
+				BA938E6620B7F6A900CCBE90 /* AAPLSegmentedDataSource.m */,
+				BA938E6720B7F6A900CCBE90 /* AAPLTextValueDataSource.h */,
+				BA938E6820B7F6A900CCBE90 /* AAPLTextValueDataSource.m */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		BA938E6920B7F6A900CCBE90 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E6A20B7F6A900CCBE90 /* AAPLCollectionViewLayout.h */,
+				BA938E6B20B7F6A900CCBE90 /* AAPLCollectionViewLayout.m */,
+				BA938E6C20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.h */,
+				BA938E6D20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m */,
+				BA938E6E20B7F6A900CCBE90 /* AAPLCollectionViewLayout_Private.h */,
+				BA938E6F20B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.h */,
+				BA938E7020B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.m */,
+				BA938E7120B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes_Private.h */,
+				BA938E7220B7F6A900CCBE90 /* AAPLLayoutMetrics.h */,
+				BA938E7320B7F6A900CCBE90 /* AAPLLayoutMetrics.m */,
+				BA938E7420B7F6A900CCBE90 /* AAPLLayoutMetrics_Private.h */,
+				BA938E7520B7F6A900CCBE90 /* AAPLShadowRegistrar.h */,
+				BA938E7620B7F6A900CCBE90 /* AAPLShadowRegistrar.m */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		BA938E7720B7F6A900CCBE90 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E7820B7F6A900CCBE90 /* AAPLCollectionViewController.h */,
+				BA938E7920B7F6A900CCBE90 /* AAPLCollectionViewController.m */,
+				BA938E7A20B7F6A900CCBE90 /* AAPLSwipeToEditController.h */,
+				BA938E7B20B7F6A900CCBE90 /* AAPLSwipeToEditController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BA938E7C20B7F6A900CCBE90 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E7D20B7F6A900CCBE90 /* AAPLBasicCell.h */,
+				BA938E7E20B7F6A900CCBE90 /* AAPLBasicCell.m */,
+				BA938E7F20B7F6A900CCBE90 /* AAPLCollectionViewCell.h */,
+				BA938E8020B7F6A900CCBE90 /* AAPLCollectionViewCell.m */,
+				BA938E8120B7F6A900CCBE90 /* AAPLCollectionViewCell_Private.h */,
+				BA938E8220B7F6A900CCBE90 /* AAPLHairlineView.h */,
+				BA938E8320B7F6A900CCBE90 /* AAPLHairlineView.m */,
+				BA938E8420B7F6A900CCBE90 /* AAPLKeyValueCell.h */,
+				BA938E8520B7F6A900CCBE90 /* AAPLKeyValueCell.m */,
+				BA938E8620B7F6A900CCBE90 /* AAPLLabel.h */,
+				BA938E8720B7F6A900CCBE90 /* AAPLLabel.m */,
+				BA938E8820B7F6A900CCBE90 /* AAPLPinnableHeaderView.h */,
+				BA938E8920B7F6A900CCBE90 /* AAPLPinnableHeaderView.m */,
+				BA938E8A20B7F6A900CCBE90 /* AAPLPlaceholderView.h */,
+				BA938E8B20B7F6A900CCBE90 /* AAPLPlaceholderView.m */,
+				BA938E8C20B7F6A900CCBE90 /* AAPLSectionHeaderView.h */,
+				BA938E8D20B7F6A900CCBE90 /* AAPLSectionHeaderView.m */,
+				BA938E8E20B7F6A900CCBE90 /* AAPLSegmentedHeaderView.h */,
+				BA938E8F20B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m */,
+				BA938E9020B7F6A900CCBE90 /* AAPLTextValueCell.h */,
+				BA938E9120B7F6A900CCBE90 /* AAPLTextValueCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA938EB320B7F6D800CCBE90 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BA6547AA20DA3B4F00FDB314 /* Views */,
+				BA4E54C220BCEFF900380F56 /* Helper */,
+				BA938EBE20B7FAE500CCBE90 /* DataSource */,
+				BA938EB420B7F97600CCBE90 /* Model */,
+				BA938E3C20B7F6A100CCBE90 /* Cells */,
+				BA938EB820B7FA7000CCBE90 /* InboxCollectionViewController.h */,
+				BA938EB920B7FA7000CCBE90 /* InboxCollectionViewController.mm */,
+				BA9C6AEC20BD424300692BDA /* InboxDataSourceItemsDiff.h */,
+				BA9C6AED20BD424300692BDA /* InboxDataSourceItemsDiff.m */,
+				BA034BA320BE4A27009ADCD2 /* InboxCollectionViewUpdater.h */,
+				BA034BA420BE4A27009ADCD2 /* InboxCollectionViewUpdater.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BA938EB420B7F97600CCBE90 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA938EB620B7F9B200CCBE90 /* Items */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BA938EB620B7F9B200CCBE90 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				BA938E3F20B7F6A100CCBE90 /* InboxDataSourceItem.h */,
+				BA938E4020B7F6A100CCBE90 /* InboxDataSourceItem.mm */,
+				BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellItem.h */,
+				BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		BA938EBE20B7FAE500CCBE90 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BA938EBF20B7FB0D00CCBE90 /* InboxCollectionViewDataSource.h */,
+				BA938EC020B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm */,
+				BA938EC220B8037400CCBE90 /* InboxDataLoader.h */,
+				BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */,
+				BA8FFCF320BE86A300233A32 /* InboxDataSourceState.h */,
+				BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		BAA5F0DE20BD4CA300F85816 /* IGListKit */ = {
+			isa = PBXGroup;
+			children = (
+				BAA5F0DF20BD4CC000F85816 /* Common */,
+			);
+			path = IGListKit;
+			sourceTree = "<group>";
+		};
+		BAA5F0DF20BD4CC000F85816 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BAA5F0E020BD4CC000F85816 /* IGListAssert.h */,
+				BAA5F0E120BD4CC000F85816 /* IGListBatchUpdateData.h */,
+				BAA5F0E220BD4CC000F85816 /* IGListBatchUpdateData.mm */,
+				BAA5F0E320BD4CC000F85816 /* IGListCompatibility.h */,
+				BAA5F0E420BD4CC000F85816 /* IGListDiff.h */,
+				BAA5F0E520BD4CC000F85816 /* IGListDiff.mm */,
+				BAA5F0E620BD4CC000F85816 /* IGListDiffable.h */,
+				BAA5F0E720BD4CC000F85816 /* IGListDiffKit.h */,
+				BAA5F0E820BD4CC000F85816 /* IGListExperiments.h */,
+				BAA5F0E920BD4CC000F85816 /* IGListIndexPathResult.h */,
+				BAA5F0EA20BD4CC000F85816 /* IGListIndexPathResult.m */,
+				BAA5F0EB20BD4CC000F85816 /* IGListIndexSetResult.h */,
+				BAA5F0EC20BD4CC000F85816 /* IGListIndexSetResult.m */,
+				BAA5F0ED20BD4CC000F85816 /* IGListMacros.h */,
+				BAA5F0EE20BD4CC000F85816 /* IGListMoveIndex.h */,
+				BAA5F0EF20BD4CC000F85816 /* IGListMoveIndex.m */,
+				BAA5F0F020BD4CC000F85816 /* IGListMoveIndexPath.h */,
+				BAA5F0F120BD4CC000F85816 /* IGListMoveIndexPath.m */,
+				BAA5F0F220BD4CC000F85816 /* Internal */,
+				BAA5F0F820BD4CC000F85816 /* NSNumber+IGListDiffable.h */,
+				BAA5F0F920BD4CC000F85816 /* NSNumber+IGListDiffable.m */,
+				BAA5F0FA20BD4CC000F85816 /* NSString+IGListDiffable.h */,
+				BAA5F0FB20BD4CC000F85816 /* NSString+IGListDiffable.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BAA5F0F220BD4CC000F85816 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				BAA5F0F320BD4CC000F85816 /* IGListArrayUtilsInternal.h */,
+				BAA5F0F420BD4CC000F85816 /* IGListIndexPathResultInternal.h */,
+				BAA5F0F520BD4CC000F85816 /* IGListIndexSetResultInternal.h */,
+				BAA5F0F620BD4CC000F85816 /* IGListMoveIndexInternal.h */,
+				BAA5F0F720BD4CC000F85816 /* IGListMoveIndexPathInternal.h */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA938E0620B7F68900CCBE90 /* NewInboxProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA938E3320B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProject" */;
+			buildPhases = (
+				BA938E0320B7F68900CCBE90 /* Sources */,
+				BA938E0420B7F68900CCBE90 /* Frameworks */,
+				BA938E0520B7F68900CCBE90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NewInboxProject;
+			productName = NewInboxProject;
+			productReference = BA938E0720B7F68900CCBE90 /* NewInboxProject.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA938E1E20B7F68900CCBE90 /* NewInboxProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA938E3620B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProjectTests" */;
+			buildPhases = (
+				BA938E1B20B7F68900CCBE90 /* Sources */,
+				BA938E1C20B7F68900CCBE90 /* Frameworks */,
+				BA938E1D20B7F68900CCBE90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA938E2120B7F68900CCBE90 /* PBXTargetDependency */,
+			);
+			name = NewInboxProjectTests;
+			productName = NewInboxProjectTests;
+			productReference = BA938E1F20B7F68900CCBE90 /* NewInboxProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA938E2920B7F68900CCBE90 /* NewInboxProjectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA938E3920B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProjectUITests" */;
+			buildPhases = (
+				BA938E2620B7F68900CCBE90 /* Sources */,
+				BA938E2720B7F68900CCBE90 /* Frameworks */,
+				BA938E2820B7F68900CCBE90 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA938E2C20B7F68900CCBE90 /* PBXTargetDependency */,
+			);
+			name = NewInboxProjectUITests;
+			productName = NewInboxProjectUITests;
+			productReference = BA938E2A20B7F68900CCBE90 /* NewInboxProjectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA938DFF20B7F68900CCBE90 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = CPU11806;
+				TargetAttributes = {
+					BA938E0620B7F68900CCBE90 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					BA938E1E20B7F68900CCBE90 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA938E0620B7F68900CCBE90;
+					};
+					BA938E2920B7F68900CCBE90 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BA938E0620B7F68900CCBE90;
+					};
+				};
+			};
+			buildConfigurationList = BA938E0220B7F68900CCBE90 /* Build configuration list for PBXProject "NewInboxProject" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = BA938DFE20B7F68900CCBE90;
+			productRefGroup = BA938E0820B7F68900CCBE90 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA938E0620B7F68900CCBE90 /* NewInboxProject */,
+				BA938E1E20B7F68900CCBE90 /* NewInboxProjectTests */,
+				BA938E2920B7F68900CCBE90 /* NewInboxProjectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA938E0520B7F68900CCBE90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA938EC620B8060900CCBE90 /* chat.json in Resources */,
+				BA938E1720B7F68900CCBE90 /* LaunchScreen.storyboard in Resources */,
+				BA938E1420B7F68900CCBE90 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E1D20B7F68900CCBE90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E2820B7F68900CCBE90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA938E0320B7F68900CCBE90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAA5F10320BD4CC000F85816 /* NSString+IGListDiffable.m in Sources */,
+				BA938EAF20B7F6A900CCBE90 /* AAPLPlaceholderView.m in Sources */,
+				BA938EB120B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m in Sources */,
+				BA938EA320B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m in Sources */,
+				BA938EA820B7F6A900CCBE90 /* AAPLSwipeToEditController.m in Sources */,
+				BA938EA420B7F6A900CCBE90 /* AAPLCollectionViewLayoutAttributes.m in Sources */,
+				BA938EAA20B7F6A900CCBE90 /* AAPLCollectionViewCell.m in Sources */,
+				BA034BA520BE4A27009ADCD2 /* InboxCollectionViewUpdater.m in Sources */,
+				BA9C6AEE20BD424300692BDA /* InboxDataSourceItemsDiff.m in Sources */,
+				BAA5F0FE20BD4CC000F85816 /* IGListIndexPathResult.m in Sources */,
+				BA938E9A20B7F6A900CCBE90 /* AAPLBasicDataSource.m in Sources */,
+				BA938EAE20B7F6A900CCBE90 /* AAPLPinnableHeaderView.m in Sources */,
+				BA938E4220B7F6A100CCBE90 /* InboxDataSourceItem.mm in Sources */,
+				BAA5F10020BD4CC000F85816 /* IGListMoveIndex.m in Sources */,
+				BA938EC420B8037400CCBE90 /* InboxDataLoader.mm in Sources */,
+				BA938E9D20B7F6A900CCBE90 /* AAPLDataSourceMapping.m in Sources */,
+				BA938E9B20B7F6A900CCBE90 /* AAPLComposedDataSource.m in Sources */,
+				BAA5F10220BD4CC000F85816 /* NSNumber+IGListDiffable.m in Sources */,
+				BA938EB220B7F6A900CCBE90 /* AAPLTextValueCell.m in Sources */,
+				BAA5F0FF20BD4CC000F85816 /* IGListIndexSetResult.m in Sources */,
+				BA938E9C20B7F6A900CCBE90 /* AAPLDataSource.m in Sources */,
+				BA938EAD20B7F6A900CCBE90 /* AAPLLabel.m in Sources */,
+				BA938EA520B7F6A900CCBE90 /* AAPLLayoutMetrics.m in Sources */,
+				BA8FFCF520BE86A300233A32 /* InboxDataSourceState.m in Sources */,
+				BA938E9E20B7F6A900CCBE90 /* AAPLDataSourceMetrics.m in Sources */,
+				BA938E4120B7F6A100CCBE90 /* InboxCollectionViewCell.mm in Sources */,
+				BA938E9420B7F6A900CCBE90 /* AAPLDebug.m in Sources */,
+				BAA5F10120BD4CC000F85816 /* IGListMoveIndexPath.m in Sources */,
+				BA938E1A20B7F68900CCBE90 /* main.m in Sources */,
+				BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellItem.m in Sources */,
+				BA4E54C520BCF04000380F56 /* TSHelper.m in Sources */,
+				BA938EA620B7F6A900CCBE90 /* AAPLShadowRegistrar.m in Sources */,
+				BA6547AD20DA3B9600FDB314 /* InboxLoadingView.m in Sources */,
+				BA938E9320B7F6A900CCBE90 /* AAPLContentLoading.m in Sources */,
+				BA938EAC20B7F6A900CCBE90 /* AAPLKeyValueCell.m in Sources */,
+				BA938E0C20B7F68900CCBE90 /* AppDelegate.m in Sources */,
+				BA938E9F20B7F6A900CCBE90 /* AAPLKeyValueDataSource.m in Sources */,
+				BAA5F0FC20BD4CC000F85816 /* IGListBatchUpdateData.mm in Sources */,
+				BA938EA720B7F6A900CCBE90 /* AAPLCollectionViewController.m in Sources */,
+				BA938E9820B7F6A900CCBE90 /* UICollectionView+SupplementaryViews.m in Sources */,
+				BA938E9920B7F6A900CCBE90 /* UIView+Helpers.m in Sources */,
+				BA938EC120B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm in Sources */,
+				BA938E9520B7F6A900CCBE90 /* AAPLStateMachine.m in Sources */,
+				BA938EAB20B7F6A900CCBE90 /* AAPLHairlineView.m in Sources */,
+				BA938EBA20B7FA7000CCBE90 /* InboxCollectionViewController.mm in Sources */,
+				BA938EA920B7F6A900CCBE90 /* AAPLBasicCell.m in Sources */,
+				BA938EB020B7F6A900CCBE90 /* AAPLSectionHeaderView.m in Sources */,
+				BA938EA120B7F6A900CCBE90 /* AAPLTextValueDataSource.m in Sources */,
+				BAA5F0FD20BD4CC000F85816 /* IGListDiff.mm in Sources */,
+				BA938E9720B7F6A900CCBE90 /* AAPLDataSource+Headers.m in Sources */,
+				BA938EA220B7F6A900CCBE90 /* AAPLCollectionViewLayout.m in Sources */,
+				BA938EA020B7F6A900CCBE90 /* AAPLSegmentedDataSource.m in Sources */,
+				BA938E9220B7F6A900CCBE90 /* AAPLAction.m in Sources */,
+				BA938E9620B7F6A900CCBE90 /* AAPLTheme.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E1B20B7F68900CCBE90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA938E2420B7F68900CCBE90 /* NewInboxProjectTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA938E2620B7F68900CCBE90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA938E2F20B7F68900CCBE90 /* NewInboxProjectUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA938E2120B7F68900CCBE90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA938E0620B7F68900CCBE90 /* NewInboxProject */;
+			targetProxy = BA938E2020B7F68900CCBE90 /* PBXContainerItemProxy */;
+		};
+		BA938E2C20B7F68900CCBE90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA938E0620B7F68900CCBE90 /* NewInboxProject */;
+			targetProxy = BA938E2B20B7F68900CCBE90 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA938E1520B7F68900CCBE90 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA938E1620B7F68900CCBE90 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA938E3120B7F68900CCBE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BA938E3220B7F68900CCBE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA938E3420B7F68900CCBE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProject/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA938E3520B7F68900CCBE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProject/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProject;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BA938E3720B7F68900CCBE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewInboxProject.app/NewInboxProject";
+			};
+			name = Debug;
+		};
+		BA938E3820B7F68900CCBE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewInboxProject.app/NewInboxProject";
+			};
+			name = Release;
+		};
+		BA938E3A20B7F68900CCBE90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProjectUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProjectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NewInboxProject;
+			};
+			name = Debug;
+		};
+		BA938E3B20B7F68900CCBE90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T52DMNDUT3;
+				INFOPLIST_FILE = NewInboxProjectUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = VNG.NewInboxProjectUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NewInboxProject;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA938E0220B7F68900CCBE90 /* Build configuration list for PBXProject "NewInboxProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA938E3120B7F68900CCBE90 /* Debug */,
+				BA938E3220B7F68900CCBE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA938E3320B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA938E3420B7F68900CCBE90 /* Debug */,
+				BA938E3520B7F68900CCBE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA938E3620B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA938E3720B7F68900CCBE90 /* Debug */,
+				BA938E3820B7F68900CCBE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA938E3920B7F68900CCBE90 /* Build configuration list for PBXNativeTarget "NewInboxProjectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA938E3A20B7F68900CCBE90 /* Debug */,
+				BA938E3B20B7F68900CCBE90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA938DFF20B7F68900CCBE90 /* Project object */;
+}
