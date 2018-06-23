@@ -154,6 +154,9 @@
     }];
 }
 
+
+// minh nht update
+
 - (void)removeItemAtIndexPath:(NSIndexPath *)indexPath {
     __weak typeof(&*self) weakself = self;
     dispatch_block_t block = ^{
