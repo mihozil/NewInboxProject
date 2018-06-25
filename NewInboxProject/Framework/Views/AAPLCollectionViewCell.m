@@ -754,6 +754,7 @@
     [contentView addSubview:_editActionsView];
     [self updateActionsConstraints];
     [contentView addConstraints:self.actionsConstraints];
+    
 }
 
 - (void)removeActionsView

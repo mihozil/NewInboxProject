@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)swipeToDeleteCell:(__kindof UICollectionViewCell *)cell;
 - (void)didSelectActionFromCell:(__kindof UICollectionViewCell *)cell;
 - (void)presentAlertSheetFromCell:(__kindof UICollectionViewCell *)cell;
+
+@property (strong, nonatomic) NSArray *selectedIndexPaths;
+
 @end
 
 

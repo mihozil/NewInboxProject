@@ -47,7 +47,7 @@ static inline BOOL AAPLTracksSupplementaryViews(UICollectionView *collectionView
 
 static void * const AAPLDataSourceContext = @"DataSourceContext";
 
-@interface AAPLCollectionViewController () <UICollectionViewDelegate, AAPLDataSourceDelegate, AAPLCollectionViewSupplementaryViewTracking>
+@interface AAPLCollectionViewController () <UICollectionViewDelegate, AAPLDataSourceDelegate, AAPLCollectionViewSupplementaryViewTracking, AAPLSwipeToEditControllerDelegate>
 @property (nonatomic, strong) AAPLSwipeToEditController *swipeController;
 @property (nonatomic, copy) dispatch_block_t updateCompletionHandler;
 @property (nonatomic, strong) NSMutableIndexSet *reloadedSections;
@@ -55,6 +55,9 @@ static void * const AAPLDataSourceContext = @"DataSourceContext";
 @property (nonatomic, strong) NSMutableIndexSet *insertedSections;
 @property (nonatomic) BOOL performingUpdates;
 @property (nonatomic, strong) NSMutableDictionary *visibleSupplementaryViews;
+
+@property (strong, nonatomic) UIBarButtonItem *deleteBarButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *doneBarButtonItem;
 
 // ContentInset handling for Keyboard
 @property (nonatomic) BOOL assignedContentInsets;
@@ -82,6 +85,7 @@ static void * const AAPLDataSourceContext = @"DataSourceContext";
     //  We need to know when the data source changes on the collection view so we can become the delegate for any APPLDataSource subclasses.
     [self.collectionView addObserver:self forKeyPath:@"dataSource" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:AAPLDataSourceContext];
     _swipeController = [[AAPLSwipeToEditController alloc] initWithCollectionView:self.collectionView];
+    _swipeController.delegate = self;
 }
 
 - (void)viewDidLoad
@@ -394,6 +398,63 @@ static void * const AAPLDataSourceContext = @"DataSourceContext";
         supplementaryViews = visibleSupplementaryViews[elementKind] = [NSMutableDictionary dictionary];
 
     [supplementaryViews removeObjectForKey:indexPath];
+}
+
+#pragma mark - AAPLSwipeToEditControllerHelper
+- (void)swipeToEditController:(AAPLSwipeToEditController *)swipeToEditController didSetEditing:(BOOL)editing {
+    if (editing) {
+        [self showEditingControl];
+    } else {
+        [self hidEditingControl];
+    }
+}
+
+- (void)showEditingControl {
+    self.navigationItem.leftBarButtonItem = self.doneBarButtonItem;
+    self.navigationItem.rightBarButtonItem = self.deleteBarButtonItem;
+}
+
+- (void)hidEditingControl {
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+- (UIBarButtonItem *)deleteBarButtonItem {
+    if (!_deleteBarButtonItem) {
+        _deleteBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Delete" style:UIBarButtonItemStylePlain target:self action:@selector(didTapDeleteBarButton)];
+    }
+    return _deleteBarButtonItem;
+}
+
+- (UIBarButtonItem *)doneBarButtonItem {
+    if (!_doneBarButtonItem) {
+        _doneBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(didTapDoneBarButton)];
+    }
+    return _doneBarButtonItem;
+}
+
+
+- (void)didTapDoneBarButton {
+    self.swipeController.editing = false;
+}
+
+// begin long gesture:
+
+- (void)didTapDeleteBarButton {
+    // delete
+    AAPLDataSource *dataSource = (AAPLDataSource*)self.collectionView.dataSource;
+    if (!dataSource) {
+        return;
+    }
+    
+    self.swipeController.editing = false;
+    
+    //    [dataSource performUpdate:^{
+    //        [dataSource removeItemsAtIndexPaths:_toDeleteIndexPaths];
+    //    } completion:^{
+    //
+    //    }];
+    // later
 }
 
 #pragma mark - AAPLCollectionViewSupplementaryViewTracking
