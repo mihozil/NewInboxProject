@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UILabel *topicTitleLabel;
 @property (strong, nonatomic) UILabel *timeStampLabel;
 
+@property (strong, nonatomic) NSDictionary *viewMap;
+
 @end
 
 @implementation InboxCollectionViewCell
@@ -25,7 +27,11 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        _viewMap = @{@(InboxDataSourceCellAvatarView):self.avatarImageView,
+                    @(InboxDataSourceCellTitleLabel):self.titleLabel,
+                    @(InboxDataSourceCellTopicTitle):self.topicTitleLabel,
+                    @(InboxDataSourceCellCaptionLabel):self.captionLabel};
+
     }
     
     return self;
@@ -59,13 +65,21 @@
 - (UILabel *)timeStampLabel {
     if (!_timeStampLabel) {
         _timeStampLabel = [[UILabel alloc]init];
+        [self.contentView addSubview:_timeStampLabel];
     }
     return _timeStampLabel;
 }
 
+- (UILabel *)topicTitleLabel {
+    if (!_topicTitleLabel) {
+        _topicTitleLabel = [[UILabel alloc]init];
+        [self.contentView addSubview:_topicTitleLabel];
+    }
+    return _topicTitleLabel;
+}
+
 #pragma mark - setObject
 - (void)setObject:(InboxDataSourceItem*)object {
-    
     typedef pair<InboxDataSourceItemLayout, UIView*> p2;
     queue<p2> layoutQueue;
     layoutQueue.push({object.layout,self.contentView});
@@ -91,33 +105,15 @@
 }
 
 - (UIView*)addSubViewType:(InboxDataSourceCellComponentType)type frame:(CGRect)frame superView:(UIView*)superView {
-    UIView *componenentView;
-    switch (type) {
-        case InboxDataSourceCellContainerView:
-            componenentView = [[UIView alloc]initWithFrame:frame];
-            break;
-        case InboxDataSourceCellAvatarView:
-            componenentView = self.avatarImageView;
-            break;
-        case InboxDataSourceCellTitleLabel:
-            componenentView = self.titleLabel;
-            break;
-        case InboxDataSourceCellCaptionLabel:
-            componenentView = self.captionLabel;
-            break;
-        case InboxDataSourceCellTopicTitle:
-            componenentView = self.topicTitleLabel;
-            break;
-        case InboxDataSourceCellTimeStampLabel:
-            componenentView = self.timeStampLabel;
-            break;
-        default:
-            break;
-    }
+    UIView *componentView;
+    if (type == InboxDataSourceCellContainerView)
+        componentView = [[UIView alloc]init];
+    else
+        componentView = [_viewMap objectForKey:@(type)];
     
-    [componenentView setFrame:frame];
-    [superView addSubview:componenentView];
-    return componenentView;
+    [componentView setFrame:frame];
+    [superView addSubview:componentView];
+    return componentView;
 }
 
 
