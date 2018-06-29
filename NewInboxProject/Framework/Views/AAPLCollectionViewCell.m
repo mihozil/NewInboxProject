@@ -931,7 +931,7 @@
 
 
 - (void)didTapRemoveImageView:(UITapGestureRecognizer*)tap {
-    [self performAction:@selector(didTapRemoveButtonCell:)];
+//    [self performAction:@selector(didTapRemoveButtonCell:)];
 }
 
 #pragma mark - Others

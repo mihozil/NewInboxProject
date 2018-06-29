@@ -60,7 +60,7 @@
 //    return layout.frame.size;
 //}
 
-#pragma mark subClass
+#pragma mark cellAction
 
 - (void)performBatchUpdates:(void (^)())updates completion:(void (^)())completion {
     [InboxCollectionViewUpdater performBatchUpdateCollectionView:self.collectionView withUpdate:updates completion:completion];

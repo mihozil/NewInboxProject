@@ -22,22 +22,20 @@ typedef enum {
     InboxDataSourceCellTimeStampLabel,
     
 } InboxDataSourceCellComponentType;
-
+typedef void(^ConfigView)(UIView*);
 
 struct InboxDataSourceItemLayout {
     InboxDataSourceCellComponentType cellComponentType;
     CGRect frame;
+    ConfigView configView;
     vector<InboxDataSourceItemLayout> children;
-    
 };
-typedef struct InboxDataSourceItemLayout InboxDataSourceItemLayout;
 
+typedef struct InboxDataSourceItemLayout InboxDataSourceItemLayout;
 
 @interface InboxDataSourceItem : NSObject
 
-@property (nonatomic) InboxDataSourceItemLayout layout;
-@property (strong, nonatomic) id item;
-
-- (id)initWithItem:(id)item layout:(InboxDataSourceItemLayout)layout;
+- (id)initWithItemLayout:(InboxDataSourceItemLayout)layout item:(id)item;
+- (void)configViewWithMap:(NSDictionary *)map cellContentView:(UIView*)contentView;
 
 @end

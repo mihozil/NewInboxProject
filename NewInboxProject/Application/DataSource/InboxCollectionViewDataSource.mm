@@ -132,7 +132,7 @@
              [AAPLAction actionWithTitle:NSLocalizedString(@"Tickle", @"Tickle") selector:@selector(tickleCell:)],
              [AAPLAction actionWithTitle:NSLocalizedString(@"Confuse", @"Confuse") selector:@selector(tickleCell:)],
              [AAPLAction actionWithTitle:NSLocalizedString(@"Feed", @"Feed") selector:@selector(tickleCell:)]
-             ];
+             ]; // temp keep this flow
 }
 
 #pragma mark actions
@@ -151,7 +151,7 @@
             self.dataSourceState = updateState;
             [self.dataSourceDiff implementAnimationCollectionView:self.collectionView];
         }];
-    }];
+    }]; // call animation directly from here
 }
 
 

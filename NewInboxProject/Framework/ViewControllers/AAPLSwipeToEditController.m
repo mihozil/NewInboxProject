@@ -230,20 +230,18 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
 
 - (void)shutActionPaneForEditingCellAnimated:(BOOL)animate
 {
-//    // This basically backs out of the Open or EditOpen states
-//    NSString *currentState = self.currentState;
-//
-//    void (^shut)() = ^{
-//        if ([currentState isEqualToString:AAPLSwipeStateEditOpen])
-//            self.currentState = AAPLSwipeStateEditing;
-//        else if ([currentState isEqualToString:AAPLSwipeStateOpen])
-//            self.currentState = AAPLSwipeStateIdle;
-//    };
-//
-//    if (!animate)
-//        [UIView performWithoutAnimation:shut];
-//    else
-//        shut();
+    // This basically backs out of the Open or EditOpen states
+    NSString *currentState = self.currentState;
+
+    void (^shut)() = ^{
+        if ([currentState isEqualToString:AAPLSwipeStateOpen])
+            self.currentState = AAPLSwipeStateIdle;
+    };
+
+    if (!animate)
+        [UIView performWithoutAnimation:shut];
+    else
+        shut();
 }
 
 - (void)viewDidDisappear:(BOOL)animated
