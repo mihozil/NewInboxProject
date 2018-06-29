@@ -51,7 +51,6 @@ NSString *const InboxSectionAddFriend = @"InboxSectionAddFriend";
     [sections setObject:section forKey:key];
     
     self.sections = [sections copy];
-    
 }
 
 @end

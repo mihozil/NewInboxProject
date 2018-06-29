@@ -496,6 +496,7 @@
     _bottomHairline.alpha = 0;
 
     _removeImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"AAPLRemoveControl"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    [_removeImageView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapRemoveImageView:)]];
     _removeImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [_removeImageView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [_removeImageView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
@@ -522,6 +523,8 @@
         _deletionConstraints = nil;
     }
 }
+
+#pragma mark - Get_Set
 
 - (void)setLayoutMargins:(UIEdgeInsets)layoutMargins
 {
@@ -577,6 +580,66 @@
     return -_editActionsView.maximumWidth;
 }
 
+- (CALayer *)leftGradientMask
+{
+    UIView *contentView = [super contentView];
+    CGRect newBounds = contentView.bounds;
+    if (_leftGradientMask == nil || !CGRectEqualToRect(_leftGradientMask.frame, newBounds)) {
+        CAGradientLayer *leftGradient = [CAGradientLayer layer];
+        leftGradient.frame = newBounds;
+        leftGradient.colors = @[(id)[[UIColor clearColor] CGColor],
+                                (id)[[UIColor clearColor] CGColor],
+                                (id)[[UIColor blackColor] CGColor]];
+        leftGradient.locations = @[@0, @0.25, @1];
+        leftGradient.startPoint = CGPointMake(0, 0.5);
+        leftGradient.endPoint = CGPointMake(0.025, 0.5);
+        self.leftGradientMask = leftGradient;
+    }
+    
+    return _leftGradientMask;
+}
+- (void)setShouldDisplaySwipeToEditAccessories:(BOOL)shouldDisplaySwipeToEditAccessories
+{
+    if (_shouldDisplaySwipeToEditAccessories == shouldDisplaySwipeToEditAccessories)
+        return;
+    
+    _shouldDisplaySwipeToEditAccessories = shouldDisplaySwipeToEditAccessories;
+    
+    BOOL showsSeparators = self.showsSeparatorsWhileEditing;
+    
+    if (_shouldDisplaySwipeToEditAccessories && showsSeparators) {
+        UIView *contentView = [super contentView];
+        [contentView addSubview:_topHairline];
+        [contentView addSubview:_bottomHairline];
+        [self prepareHairlineConstraintsIfNeeded];
+        [self addConstraints:_hairlineConstraints];
+    }
+    
+    [self applyGradientMaskIfNeeded];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.topHairline.alpha = _shouldDisplaySwipeToEditAccessories ? 1 : 0;
+        self.bottomHairline.alpha = _shouldDisplaySwipeToEditAccessories ? 1 : 0;
+    } completion:^(BOOL finished) {
+        if (!_shouldDisplaySwipeToEditAccessories && showsSeparators) {
+            [self removeConstraints:_hairlineConstraints];
+            [_topHairline removeFromSuperview];
+            [_bottomHairline removeFromSuperview];
+        }
+    }];
+}
+
+- (void)setColumnIndex:(NSInteger)columnIndex
+{
+    if (columnIndex == _columnIndex)
+        return;
+    
+    _columnIndex = columnIndex;
+    [self applyGradientMaskIfNeeded];
+}
+
+
+#pragma mark - Swipe
 - (void)beginSwipeWithPosition:(CGPoint)position velocity:(CGFloat)velocity
 {
     self.swipeInitialFramePosition = _privateContentView.frame.origin.x;
@@ -689,49 +752,6 @@
     return keepOpen && !highlightingDefaultAction;
 }
 
-- (void)performMoreAction
-{
-    [self aapl_sendAction:@selector(presentAlertSheetFromCell:)];
-}
-
-- (void)performAction:(AAPLAction *)action
-{
-    SEL selector = action.selector;
-    if (!selector)
-        return;
-
-    [self aapl_sendAction:selector];
-    [self aapl_sendAction:@selector(didSelectActionFromCell:)];
-}
-
-- (void)prepareForInteractiveRemoval
-{
-    _deletePending = YES;
-
-    CGRect frame = _privateContentView.frame;
-    CGFloat width = CGRectGetWidth(frame);
-    CGFloat height = CGRectGetHeight(frame);
-
-    UIView *contentView = [super contentView];
-    AAPLActionsView *actionView = self.editActionsView;
-    NSMutableArray *constraints = [NSMutableArray array];
-
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:height]];
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeLeading multiplier:1 constant:0]];
-    [constraints addObject:[NSLayoutConstraint constraintWithItem:_privateContentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:height]];
-    _deletionConstraints = constraints;
-
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowAnimatedContent | UIViewAnimationOptionLayoutSubviews animations:^{
-        self.contentHeightConstraint.active = NO;
-        [NSLayoutConstraint deactivateConstraints:self.actionsConstraints];
-        [NSLayoutConstraint activateConstraints:constraints];
-        self.editActionsView.highlightDefaultAction = YES;
-        self.swipeTranslation = - width;
-        [self layoutIfNeeded];
-    } completion:nil];
-}
 
 - (void)showActionsViewWithSwipeType:(AAPLCollectionViewCellSwipeType)swipeType
 {
@@ -799,6 +819,12 @@
     _hairlineConstraints = hairlineConstraints;
 }
 
+- (void)animateOutSwipeToEditAccessories
+{
+    self.shouldDisplaySwipeToEditAccessories = NO;
+}
+
+#pragma mark - Actions
 - (void)updateActionsConstraints
 {
     UIView *contentView = [super contentView];
@@ -831,6 +857,51 @@
     self.actionsConstraints = constraints;
 }
 
+- (void)performMoreAction
+{
+    [self aapl_sendAction:@selector(presentAlertSheetFromCell:)];
+}
+
+- (void)performAction:(AAPLAction *)action
+{
+    SEL selector = action.selector;
+    if (!selector)
+        return;
+    
+    [self aapl_sendAction:selector];
+    [self aapl_sendAction:@selector(didSelectActionFromCell:)];
+}
+
+- (void)prepareForInteractiveRemoval
+{
+    _deletePending = YES;
+    
+    CGRect frame = _privateContentView.frame;
+    CGFloat width = CGRectGetWidth(frame);
+    CGFloat height = CGRectGetHeight(frame);
+    
+    UIView *contentView = [super contentView];
+    AAPLActionsView *actionView = self.editActionsView;
+    NSMutableArray *constraints = [NSMutableArray array];
+    
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:height]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:actionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:contentView attribute:NSLayoutAttributeLeading multiplier:1 constant:0]];
+    [constraints addObject:[NSLayoutConstraint constraintWithItem:_privateContentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:height]];
+    _deletionConstraints = constraints;
+    
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowAnimatedContent | UIViewAnimationOptionLayoutSubviews animations:^{
+        self.contentHeightConstraint.active = NO;
+        [NSLayoutConstraint deactivateConstraints:self.actionsConstraints];
+        [NSLayoutConstraint activateConstraints:constraints];
+        self.editActionsView.highlightDefaultAction = YES;
+        self.swipeTranslation = - width;
+        [self layoutIfNeeded];
+    } completion:nil];
+}
+
+
 - (NSArray *)editActions
 {
     return _editActionsView.actions;
@@ -851,11 +922,6 @@
     self.shouldDisplaySwipeToEditAccessories = NO;
 }
 
-- (void)animateOutSwipeToEditAccessories
-{
-    self.shouldDisplaySwipeToEditAccessories = NO;
-}
-
 - (BOOL)touchWithinEditActions:(UITouch *)touch
 {
     CGPoint touchPoint = [touch locationInView:_editActionsView];
@@ -863,24 +929,13 @@
     return CGRectContainsPoint(disabledRect, touchPoint);
 }
 
-- (CALayer *)leftGradientMask
-{
-    UIView *contentView = [super contentView];
-    CGRect newBounds = contentView.bounds;
-    if (_leftGradientMask == nil || !CGRectEqualToRect(_leftGradientMask.frame, newBounds)) {
-        CAGradientLayer *leftGradient = [CAGradientLayer layer];
-        leftGradient.frame = newBounds;
-        leftGradient.colors = @[(id)[[UIColor clearColor] CGColor],
-                                (id)[[UIColor clearColor] CGColor],
-                                (id)[[UIColor blackColor] CGColor]];
-        leftGradient.locations = @[@0, @0.25, @1];
-        leftGradient.startPoint = CGPointMake(0, 0.5);
-        leftGradient.endPoint = CGPointMake(0.025, 0.5);
-        self.leftGradientMask = leftGradient;
-    }
 
-    return _leftGradientMask;
+- (void)didTapRemoveImageView:(UITapGestureRecognizer*)tap {
+    [self performAction:@selector(didTapRemoveButtonCell:)];
 }
+
+#pragma mark - Others
+
 
 - (void)applyGradientMaskIfNeeded
 {
@@ -900,45 +955,7 @@
     }
 }
 
-- (void)setShouldDisplaySwipeToEditAccessories:(BOOL)shouldDisplaySwipeToEditAccessories
-{
-    if (_shouldDisplaySwipeToEditAccessories == shouldDisplaySwipeToEditAccessories)
-        return;
 
-    _shouldDisplaySwipeToEditAccessories = shouldDisplaySwipeToEditAccessories;
-
-    BOOL showsSeparators = self.showsSeparatorsWhileEditing;
-
-    if (_shouldDisplaySwipeToEditAccessories && showsSeparators) {
-        UIView *contentView = [super contentView];
-        [contentView addSubview:_topHairline];
-        [contentView addSubview:_bottomHairline];
-        [self prepareHairlineConstraintsIfNeeded];
-        [self addConstraints:_hairlineConstraints];
-    }
-
-    [self applyGradientMaskIfNeeded];
-
-    [UIView animateWithDuration:0.5 animations:^{
-        self.topHairline.alpha = _shouldDisplaySwipeToEditAccessories ? 1 : 0;
-        self.bottomHairline.alpha = _shouldDisplaySwipeToEditAccessories ? 1 : 0;
-    } completion:^(BOOL finished) {
-        if (!_shouldDisplaySwipeToEditAccessories && showsSeparators) {
-            [self removeConstraints:_hairlineConstraints];
-            [_topHairline removeFromSuperview];
-            [_bottomHairline removeFromSuperview];
-        }
-    }];
-}
-
-- (void)setColumnIndex:(NSInteger)columnIndex
-{
-    if (columnIndex == _columnIndex)
-        return;
-
-    _columnIndex = columnIndex;
-    [self applyGradientMaskIfNeeded];
-}
 
 - (void)layoutSubviews
 {

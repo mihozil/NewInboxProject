@@ -499,7 +499,7 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
 }
 
 - (BOOL)tapGestureShouldBeginWhileEditing:(UIGestureRecognizer*)gestureRecognizer {
-    return YES;
+    return false;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer

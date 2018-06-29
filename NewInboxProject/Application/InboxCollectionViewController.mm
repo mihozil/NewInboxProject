@@ -75,6 +75,10 @@
     [dataSource removeItemAtIndexPath:indexPath];
 }
 
+- (void)didTapRemoveButtonCell:(__kindof UICollectionViewCell *)cell {
+    
+}
+
 #pragma mark state
 - (void)dataSourceDidEnterLoadingState:(InboxCollectionViewDataSource *)dataSource {
     _loadingView = [[InboxLoadingView alloc]initWithFrame:self.collectionView.frame];
