@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface InboxCollectionViewCellItem : NSObject
+@interface InboxCollectionViewCellItem : NSObject <NSCopying>
 
-@property (strong, nonatomic) NSString *avatarUrl, *title, *caption, *timeStamp;
+@property (copy, nonatomic) NSString *avatarUrl, *title, *caption, *timeStamp;
+@property (assign, nonatomic) BOOL selectingInEditingState;
 
 @end

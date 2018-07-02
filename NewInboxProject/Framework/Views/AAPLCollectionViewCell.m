@@ -36,7 +36,6 @@
 @property (nonatomic, strong) NSArray *editingConstraints;
 @property (nonatomic, strong) NSArray *actionsConstraints;
 @property (nonatomic, strong) UIImageView *reorderImageView;
-@property (nonatomic, strong) UIImageView *removeImageView;
 @property (nonatomic, strong) AAPLActionsView *editActionsView;
 @property (nonatomic) BOOL removeControlRotated;
 @property (nonatomic, readwrite) BOOL shouldDisplaySwipeToEditAccessories;
@@ -1091,6 +1090,7 @@
 
     CGFloat editingWidth = 0;
     _removeImageView.tintColor = self.theme.destructiveActionColor;
+    _removeImageView.alpha = 0.5;
     [superContentView addSubview:_removeImageView];
 
     CGFloat removeWidth = _removeImageView.image.size.width;

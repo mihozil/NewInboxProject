@@ -183,7 +183,10 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
 
 - (void)setCurrentState:(NSString *)currentState
 {
-    SWIPE_LOG(@"%@", currentState);
+    
+    if (currentState == AAPLSwipeStateIdle) {
+        
+    }
     _stateMachine.currentState = currentState;
 }
 
@@ -198,7 +201,10 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
         return;
     
     _editing = editing;
-    
+    if ([self.currentState isEqualToString:AAPLSwipeStateIdle])
+        self.currentState = AAPLSwipeStateEditing;
+    else if ([self.currentState isEqualToString:AAPLSwipeStateEditing])
+        self.currentState = AAPLSwipeStateIdle;
     
     AAPLCollectionViewLayout *layout = (AAPLCollectionViewLayout *)self.collectionView.collectionViewLayout;
     
@@ -299,23 +305,20 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
             if (CGRectContainsPoint(self.editingCell.bounds, cellLocation))
                 break;
             
-            self.currentState = AAPLSwipeStateEditing;
             // Cancel the recognizer by disabling & re-enabling it. This prevents it from firing an end state notification.
             recognizer.enabled = NO;
             recognizer.enabled = YES;
             
-            self.editing = true;
-            
+            self.editing = true; // set current state
             break;
-            
         }
             
         case UIGestureRecognizerStateCancelled:
-            self.currentState = AAPLSwipeStateEditing;
+            self.editing = true;
             break;
             
         case UIGestureRecognizerStateEnded:
-            self.currentState = AAPLSwipeStateEditing;
+            self.editing = true;
             break;
             
         default:
@@ -328,8 +331,17 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
     // do any thing at didEnter .. didExit
 }
 
-- (void)handleTapEditingState:(UITapGestureRecognizer*)recognizer {
+- (void)handleTapEditingState:(UITapGestureRecognizer*)gestureRecognizer {
+    UITapGestureRecognizer *tapGestureRecognizer = (UITapGestureRecognizer *)gestureRecognizer;
     
+    // only if it's a AAPLCollectionViewCell
+    CGPoint position = [tapGestureRecognizer locationInView:_collectionView];
+    NSIndexPath *indexPath = [_collectionView indexPathForItemAtPoint:position];
+    if (indexPath &&
+         [self.delegate respondsToSelector:@selector(swipeToEditController:didSelectCellAtIndexPath:)]) {
+            [self.delegate swipeToEditController:self didSelectCellAtIndexPath:indexPath]; // no change State
+    }
+         
 }
 
 #pragma mark - State Transition methods
@@ -404,11 +416,9 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
 }
 
 - (void)didEnterEditingState {
-    
     self.panWrapper.shouldBegin = NULL;
     self.tapWrapper.shouldBegin = @selector(tapGestureShouldBeginWhileEditing:);
     self.tapWrapper.action = @selector(handleTapEditingState:);
-    
 }
 
 
@@ -497,12 +507,13 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
 }
 
 - (BOOL)tapGestureShouldBeginWhileEditing:(UIGestureRecognizer*)gestureRecognizer {
-    return false;
+    NSLog(@"tapGestureShouldBeginWhileEditing");
+    return true;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    SWIPE_LOG(@"gestureRecognizer:%@ otherRecognizer:%@", gestureRecognizer, otherGestureRecognizer);
+//    NSLog(@"sulmutanouslyGestureRecognizer: %@ %@",gestureRecognizer,otherGestureRecognizer);
     // with long: yes
     if (gestureRecognizer == self.longPressWrapper.gestureRecognizer || otherGestureRecognizer == self.longPressWrapper.gestureRecognizer)
         return true;

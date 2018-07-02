@@ -75,8 +75,20 @@
     [dataSource removeItemAtIndexPath:indexPath];
 }
 
-- (void)didTapRemoveButtonCell:(__kindof UICollectionViewCell *)cell {
-    
+#pragma mark swipeEditDelegate
+- (void)swipeToEditController:(AAPLSwipeToEditController *)swipeToEditController didSelectCellAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"minhnht: didSelectCellAtIndexPath: %ld",indexPath.item);
+    [self.dataSource didSelectIndexPathInSwipeEditingState:indexPath];
+}
+
+- (void)didTapDeleteBarButton {
+    [super didTapDeleteBarButton];
+    [self.dataSource deleteSelectingIndexPathsInSwipeEditingState];
+}
+
+- (void)didTapDoneBarButton {
+    [super didTapDoneBarButton];
+    [self.dataSource resetSelectingIndexPathsInSwipeEditingState];
 }
 
 #pragma mark state

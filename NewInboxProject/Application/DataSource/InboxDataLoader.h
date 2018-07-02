@@ -13,7 +13,7 @@
 typedef void (^loadContentCompletion)(InboxDataSourceState*, NSError*);
 @interface InboxDataLoader : NSObject
 
-- (id)initWithQueueState:(InboxDataSourceState*)queueState actionQueue:(dispatch_queue_t)actionQueue actionQueueName:(const char*)actionQueueName;
+- (id)initWithActionQueue:(dispatch_queue_t)actionQueue actionQueueName:(const char*)actionQueueName;
 - (void)loadContentWithCompletionHandle:(loadContentCompletion)completion;
 
 @end

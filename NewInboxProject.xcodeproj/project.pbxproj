@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55B6B94420E887DE00E89CFA /* InboxDataSourceChangeSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 55B6B94320E887DE00E89CFA /* InboxDataSourceChangeSet.mm */; };
 		BA034BA520BE4A27009ADCD2 /* InboxCollectionViewUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = BA034BA420BE4A27009ADCD2 /* InboxCollectionViewUpdater.m */; };
 		BA4E54C520BCF04000380F56 /* TSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E54C320BCF04000380F56 /* TSHelper.m */; };
 		BA6547AD20DA3B9600FDB314 /* InboxLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */; };
-		BA8FFCF520BE86A300233A32 /* InboxDataSourceState.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */; };
+		BA8FFCF520BE86A300233A32 /* InboxDataSourceState.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA8FFCF420BE86A300233A32 /* InboxDataSourceState.mm */; };
 		BA938E0C20B7F68900CCBE90 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938E0B20B7F68900CCBE90 /* AppDelegate.m */; };
 		BA938E1420B7F68900CCBE90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA938E1320B7F68900CCBE90 /* Assets.xcassets */; };
 		BA938E1720B7F68900CCBE90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA938E1520B7F68900CCBE90 /* LaunchScreen.storyboard */; };
@@ -86,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55B6B94220E887DE00E89CFA /* InboxDataSourceChangeSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceChangeSet.h; sourceTree = "<group>"; };
+		55B6B94320E887DE00E89CFA /* InboxDataSourceChangeSet.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxDataSourceChangeSet.mm; sourceTree = "<group>"; };
 		BA034BA320BE4A27009ADCD2 /* InboxCollectionViewUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewUpdater.h; sourceTree = "<group>"; };
 		BA034BA420BE4A27009ADCD2 /* InboxCollectionViewUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxCollectionViewUpdater.m; sourceTree = "<group>"; };
 		BA4E54C320BCF04000380F56 /* TSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHelper.m; sourceTree = "<group>"; };
@@ -93,7 +96,7 @@
 		BA6547AB20DA3B9600FDB314 /* InboxLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxLoadingView.h; sourceTree = "<group>"; };
 		BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxLoadingView.m; sourceTree = "<group>"; };
 		BA8FFCF320BE86A300233A32 /* InboxDataSourceState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceState.h; sourceTree = "<group>"; };
-		BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxDataSourceState.m; sourceTree = "<group>"; };
+		BA8FFCF420BE86A300233A32 /* InboxDataSourceState.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxDataSourceState.mm; sourceTree = "<group>"; };
 		BA938E0720B7F68900CCBE90 /* NewInboxProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewInboxProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA938E0A20B7F68900CCBE90 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA938E0B20B7F68900CCBE90 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -496,7 +499,9 @@
 				BA938EC220B8037400CCBE90 /* InboxDataLoader.h */,
 				BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */,
 				BA8FFCF320BE86A300233A32 /* InboxDataSourceState.h */,
-				BA8FFCF420BE86A300233A32 /* InboxDataSourceState.m */,
+				BA8FFCF420BE86A300233A32 /* InboxDataSourceState.mm */,
+				55B6B94220E887DE00E89CFA /* InboxDataSourceChangeSet.h */,
+				55B6B94320E887DE00E89CFA /* InboxDataSourceChangeSet.mm */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -704,11 +709,12 @@
 				BA938E9B20B7F6A900CCBE90 /* AAPLComposedDataSource.m in Sources */,
 				BAA5F10220BD4CC000F85816 /* NSNumber+IGListDiffable.m in Sources */,
 				BA938EB220B7F6A900CCBE90 /* AAPLTextValueCell.m in Sources */,
+				55B6B94420E887DE00E89CFA /* InboxDataSourceChangeSet.mm in Sources */,
 				BAA5F0FF20BD4CC000F85816 /* IGListIndexSetResult.m in Sources */,
 				BA938E9C20B7F6A900CCBE90 /* AAPLDataSource.m in Sources */,
 				BA938EAD20B7F6A900CCBE90 /* AAPLLabel.m in Sources */,
 				BA938EA520B7F6A900CCBE90 /* AAPLLayoutMetrics.m in Sources */,
-				BA8FFCF520BE86A300233A32 /* InboxDataSourceState.m in Sources */,
+				BA8FFCF520BE86A300233A32 /* InboxDataSourceState.mm in Sources */,
 				BA938E9E20B7F6A900CCBE90 /* AAPLDataSourceMetrics.m in Sources */,
 				BA938E4120B7F6A100CCBE90 /* InboxCollectionViewCell.mm in Sources */,
 				BA938E9420B7F6A900CCBE90 /* AAPLDebug.m in Sources */,

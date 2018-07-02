@@ -10,7 +10,6 @@
 
 #import "AAPLCollectionViewController.h"
 #import "AAPLDataSource_Private.h"
-#import "AAPLSwipeToEditController.h"
 #import "AAPLCollectionViewLayout_Private.h"
 #import "AAPLCollectionViewCell_Private.h"
 #import "AAPLAction.h"
@@ -47,7 +46,7 @@ static inline BOOL AAPLTracksSupplementaryViews(UICollectionView *collectionView
 
 static void * const AAPLDataSourceContext = @"DataSourceContext";
 
-@interface AAPLCollectionViewController () <UICollectionViewDelegate, AAPLDataSourceDelegate, AAPLCollectionViewSupplementaryViewTracking, AAPLSwipeToEditControllerDelegate>
+@interface AAPLCollectionViewController () <UICollectionViewDelegate, AAPLDataSourceDelegate, AAPLCollectionViewSupplementaryViewTracking>
 @property (nonatomic, strong) AAPLSwipeToEditController *swipeController;
 @property (nonatomic, copy) dispatch_block_t updateCompletionHandler;
 @property (nonatomic, strong) NSMutableIndexSet *reloadedSections;

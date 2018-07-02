@@ -37,8 +37,8 @@
     
     NSArray *sectionKeys = @[InboxSectionChat,InboxSectionAddFriend];
     for (NSString *key in sectionKeys) {
-        NSArray *oldSection = [oldState.sections objectForKey:key];
-        NSArray *newSection = [newState.sections objectForKey:key];
+        NSArray *oldSection = [oldState.sectionsDic objectForKey:key];
+        NSArray *newSection = [newState.sectionsDic objectForKey:key];
         if (oldSection && newSection) {
             IGListIndexPathResult *result = IGListDiffPaths(0, 0, oldSection, newSection, IGListDiffEquality);
             
@@ -50,10 +50,10 @@
             }
         }
         if (oldSection && !newSection) {
-            [self.deleteSections addIndex:[oldState.sections.allKeys indexOfObject:key]];
+            [self.deleteSections addIndex:[oldState.sectionsDic.allKeys indexOfObject:key]];
         }
         if (!oldSection && newSection) {
-            [self.insertSections addIndex:[newState.sections.allKeys indexOfObject:key]];
+            [self.insertSections addIndex:[newState.sectionsDic.allKeys indexOfObject:key]];
         }
     }
     

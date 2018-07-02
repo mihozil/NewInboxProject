@@ -30,10 +30,18 @@
         _viewMap = @{@(InboxDataSourceCellAvatarView):self.avatarImageView,
                     @(InboxDataSourceCellTitleLabel):self.titleLabel,
                     @(InboxDataSourceCellTopicTitle):self.topicTitleLabel,
-                    @(InboxDataSourceCellCaptionLabel):self.captionLabel};
+                    @(InboxDataSourceCellCaptionLabel):self.captionLabel,
+                     @(InboxDataSourceCellRemoveImageView):self.removeImageView
+                     };
     }
     
     return self;
+}
+
+- (void)prepareForReuse {
+    if (self.editing) {
+        
+    }
 }
 
 #pragma mark - PROPERTY

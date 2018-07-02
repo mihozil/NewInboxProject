@@ -18,15 +18,13 @@
 @end
 
 @implementation InboxDataLoader {
-    InboxDataSourceState *_queueState;
     dispatch_queue_t _actionQueue;
     const char* _actionQueueName;
 }
 
-- (id)initWithQueueState:(InboxDataSourceState*)queueState actionQueue:(dispatch_queue_t)actionQueue actionQueueName:(const char*)actionQueueName {
+- (id)initWithActionQueue:(dispatch_queue_t)actionQueue actionQueueName:(const char*)actionQueueName {
     self = [super init];
     if (self) {
-        _queueState = queueState;
         _actionQueue = actionQueue;
         _actionQueueName = actionQueueName;
     }
@@ -42,22 +40,26 @@
                 return;
             }
             
-            [self creatingqueueItemsByEntities:entities];
+            InboxDataSourceState *dataSouraceState = [self creatingDataSourceStateByEntities:entities];
             if (completion)
-                completion([_queueState copy], nil);
+                completion([dataSouraceState copy], nil);
         }];
     }];
 }
 
 #pragma mark creatingqueueItems
-- (void)creatingqueueItemsByEntities:(NSArray*)entities {
-    [_queueState resetDataSourceState];
+- (InboxDataSourceState*)creatingDataSourceStateByEntities:(NSArray*)entities {
+    // temp just one section
+    NSMutableDictionary *newSections = [NSMutableDictionary new];
+    
     NSMutableArray *items = [NSMutableArray new];
     for (NSDictionary *entity in entities) {
         InboxDataSourceItem *dataSourceItem = [self newItemWithEntity:entity];
         [items addObject:dataSourceItem];
     }
-    [_queueState addSection:items forKey:InboxSectionChat]; // temp just chat
+    
+    [newSections setObject:items forKey:InboxSectionChat];
+    return [[InboxDataSourceState alloc]initWithSectionsDic:newSections];
 }
 
 - (InboxDataSourceItem*)newItemWithEntity:(NSDictionary*)entity {

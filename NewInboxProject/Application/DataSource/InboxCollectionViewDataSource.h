@@ -27,4 +27,9 @@
 @property (strong, nonatomic) InboxDataSourceItemsDiff *dataSourceDiff;
 @property (weak, nonatomic) id<InboxCollectionViewDataSourceDelegate> inboxDelegate;
 
+#pragma update
+- (void)didSelectIndexPathInSwipeEditingState:(NSIndexPath*)indexPath;
+- (void)deleteSelectingIndexPathsInSwipeEditingState;
+- (void)resetSelectingIndexPathsInSwipeEditingState;
+
 @end

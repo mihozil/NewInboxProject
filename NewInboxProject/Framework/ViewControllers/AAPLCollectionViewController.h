@@ -6,15 +6,13 @@
  A subclass of UICollectionViewController that adds support for swipe to edit and drag reordering.
  */
 
+#import "AAPLSwipeToEditController.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-
-
-
 @class AAPLAction;
-
 /// A subclass of UICollectionViewController that adds support for swipe to edit and drag reordering.
-@interface AAPLCollectionViewController : UICollectionViewController <UICollectionViewDelegate>
+@interface AAPLCollectionViewController : UICollectionViewController <UICollectionViewDelegate,AAPLSwipeToEditControllerDelegate>
 
 @property (nonatomic, getter = isEditing) BOOL editing;
 
@@ -25,11 +23,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface AAPLCollectionViewController (AAPLCollectionViewControllerEditingActions)
+@interface AAPLCollectionViewController (AAPLCollectionViewControllerEditingActions) <AAPLSwipeToEditControllerDelegate>
 - (void)swipeToDeleteCell:(__kindof UICollectionViewCell *)cell;
 - (void)didTapRemoveButtonCell:(__kindof UICollectionViewCell *)cell;
 - (void)didSelectActionFromCell:(__kindof UICollectionViewCell *)cell;
 - (void)presentAlertSheetFromCell:(__kindof UICollectionViewCell *)cell;
+
+- (void)didTapDeleteBarButton;
+- (void)didTapDoneBarButton;
 
 @property (strong, nonatomic) NSArray *selectedIndexPaths;
 

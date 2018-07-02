@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol AAPLSwipeToEditControllerDelegate<NSObject>
 
 - (void)swipeToEditController:(AAPLSwipeToEditController*)swipeToEditController didSetEditing:(BOOL)editing;
+- (void)swipeToEditController:(AAPLSwipeToEditController*)swipeToEditController didSelectCellAtIndexPath:(NSIndexPath*)indexPath;
 
 @end
 

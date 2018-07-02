@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// The theme this cell should use to resolve any unknown values
 @property (nonatomic, strong) AAPLTheme *theme;
 
+@property (nonatomic, strong) UIImageView *removeImageView; // this should not be default beahviar
+
 /// If you implement the setEditing: method, you MUST call super
 - (void)setEditing:(BOOL)editing NS_REQUIRES_SUPER;
 

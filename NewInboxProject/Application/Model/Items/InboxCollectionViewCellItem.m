@@ -10,4 +10,14 @@
 
 @implementation InboxCollectionViewCellItem
 
+- (id)copyWithZone:(NSZone *)zone {
+    InboxCollectionViewCellItem *newItem = [super init];
+    newItem.avatarUrl = self.avatarUrl;
+    newItem.title = self.title;
+    newItem.caption = self.caption;
+    newItem.timeStamp = self.timeStamp;
+    newItem.selectingInEditingState = self.selectingInEditingState;
+    return newItem;
+}
+
 @end

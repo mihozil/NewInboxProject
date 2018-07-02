@@ -12,9 +12,8 @@
 
 @interface InboxDataSourceItem() <IGListDiffable>
 
-@property (nonatomic) InboxDataSourceItemLayout layout;
 @property (strong,nonatomic) NSDictionary *map;
-@property (strong, nonatomic) id item;
+
 
 @end
 
@@ -31,6 +30,8 @@
 
 - (void)configViewWithMap:(NSDictionary *)map cellContentView:(UIView*)contentView {
     self.map = map;
+    
+    [self configDefaultView];
     
     typedef pair<InboxDataSourceItemLayout, UIView*> p2;
     queue<p2> layoutQueue;
@@ -65,6 +66,19 @@
     return componentView;
 }
 
+- (void)configDefaultView {
+    if ([self.item isKindOfClass:[InboxCollectionViewCellItem class]]) {
+        InboxCollectionViewCellItem *collectionViewItem = self.item;
+        UIImageView *removeImageView = [self.map objectForKey:@(InboxDataSourceCellRemoveImageView)];
+        if (collectionViewItem.selectingInEditingState)
+            removeImageView.alpha = 1.0;
+        else
+            removeImageView.alpha = 0.5;
+    }
+}
+
+#pragma mark other
+
 - (id<NSObject>)diffIdentifier {
     InboxCollectionViewCellItem *item = (InboxCollectionViewCellItem*)self.item;
     if ([item isKindOfClass:[InboxCollectionViewCellItem class]]) {
@@ -76,6 +90,13 @@
 - (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
     return true;
 
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    InboxDataSourceItem *newItem = [[InboxDataSourceItem alloc]init];
+    newItem.layout = self.layout;
+    newItem.item = [self.item copy];
+    return newItem;
 }
 
 @end

@@ -14,13 +14,13 @@ extern NSString *const InboxSectionAddFriend;
 
 @interface InboxDataSourceState : NSObject <NSCopying>
 
-- (void)resetDataSourceState;
-- (void)addSection:(NSArray*)items forKey:(NSString*)sectionKey;
-- (void)removeItemAtIndexPath:(NSIndexPath*)indexPath;
-
-@property (copy, nonatomic) NSDictionary<NSString*,NSArray*> *sections;
+@property (readonly, copy, nonatomic) NSDictionary<NSString*,NSArray*> *sectionsDic;
+@property (readonly, copy, nonatomic) NSArray *sections;
 
 - (id)objectAtIndexPath:(NSIndexPath*)indexPath;
+- (instancetype)initWithSectionsDic:(NSDictionary<NSString*,NSArray*>*)sectionsDic;
+- (NSArray *)selectingIndexPathInEditingState;
+- (NSIndexPath*)indexPathForItem:(id)dataSourceItem inSection:(NSArray*)section;
 
 
 @end
