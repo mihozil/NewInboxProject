@@ -11,7 +11,7 @@
 @implementation InboxCollectionViewCellItem
 
 - (id)copyWithZone:(NSZone *)zone {
-    InboxCollectionViewCellItem *newItem = [super init];
+    InboxCollectionViewCellItem *newItem = [[InboxCollectionViewCellItem alloc] init];
     newItem.avatarUrl = self.avatarUrl;
     newItem.title = self.title;
     newItem.caption = self.caption;

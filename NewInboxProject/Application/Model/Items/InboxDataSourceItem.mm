@@ -84,21 +84,35 @@
 
 - (id<NSObject>)diffIdentifier {
     InboxCollectionViewCellItem *item = (InboxCollectionViewCellItem*)self.item;
+    
     if ([item isKindOfClass:[InboxCollectionViewCellItem class]]) {
-        return item.title;
+        NSString *diffId = [NSString stringWithFormat:@"%@",item.title];
+        return diffId;
     }
     return @"AnEmptyString";
 }
 
 - (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
-    return true;
+    InboxCollectionViewCellItem *firstItem = (InboxCollectionViewCellItem*)self.item;
+    InboxCollectionViewCellItem *secondItem = [(InboxDataSourceItem*)object item];
 
+    if ([secondItem isKindOfClass:[InboxCollectionViewCellItem class]]) {
+        if (firstItem.selectingInEditingState != secondItem.selectingInEditingState) {
+            return false;
+        }
+        if (firstItem.selectingInEditingState == 1 || secondItem.selectingInEditingState ==1) {
+            
+        }
+    }
+    
+    return true;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
     InboxDataSourceItem *newItem = [[InboxDataSourceItem alloc]init];
     newItem.layout = self.layout;
     newItem.item = [self.item copy];
+    NSLog(@"old - new cellItem: %@ %@",self.item,newItem.item);
     return newItem;
 }
 

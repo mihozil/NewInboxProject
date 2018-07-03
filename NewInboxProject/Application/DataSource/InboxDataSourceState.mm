@@ -61,9 +61,11 @@ NSString *const InboxSectionAddFriend = @"InboxSectionAddFriend";
             if ([datasourceItem.item isKindOfClass:[InboxCollectionViewCellItem class]]) {
                 InboxCollectionViewCellItem *item = datasourceItem.item;
                 
-                NSInteger sectionIndex = [self.sections indexOfObject:section];
-                NSInteger itemIndex = [section indexOfObject:datasourceItem];
-                [selects addObject:[NSIndexPath indexPathForItem:itemIndex inSection:sectionIndex]];
+                if (item.selectingInEditingState) {
+                    NSInteger sectionIndex = [self.sections indexOfObject:section];
+                    NSInteger itemIndex = [section indexOfObject:datasourceItem];
+                    [selects addObject:[NSIndexPath indexPathForItem:itemIndex inSection:sectionIndex]];
+                }
             }
         }
     }

@@ -168,13 +168,15 @@
 - (void)didSelectIndexPathInSwipeEditingState:(NSIndexPath *)indexPath {
     // update model <items>
     dispatch_block_t block = ^{
-        id item = [[_queueDataSourceState objectAtIndexPath:indexPath] copy];
+        id item = [_queueDataSourceState objectAtIndexPath:indexPath];
         if ([item isKindOfClass:[InboxDataSourceItem class]]) {
             InboxDataSourceItem *newItem = [(InboxDataSourceItem*)item copy];
             InboxCollectionViewCellItem *cellItem = (InboxCollectionViewCellItem*)newItem.item;
             
+            
             if ([cellItem isKindOfClass:[InboxCollectionViewCellItem class]]) {
                 cellItem.selectingInEditingState = !cellItem.selectingInEditingState;
+                NSLog(@"old new: %d %d",[[(InboxDataSourceItem*)item item]selectingInEditingState],[[(InboxDataSourceItem*)newItem item]selectingInEditingState]);
                 
                 NSDictionary *updates = @{indexPath:newItem};
                 InboxDataSourceChangeSet *changeSet = [[InboxDataSourceChangeSet alloc]initWithUpdates:updates removes:nil inserts:nil];
@@ -231,6 +233,7 @@
     
     for (NSIndexPath *indexPath in changeSet.updates.allKeys) {
         NSMutableArray *section = [newSections.allValues objectAtIndex:indexPath.section];
+//        NSLog(@"minhnht: indexPath - selecting: %ld %ld",indexPath.item,[[(InboxDataSourceItem*)[changeSet.updates objectForKey:indexPath] item]selectingInEditingState]);
         [section replaceObjectAtIndex:indexPath.item withObject:[changeSet.updates objectForKey:indexPath]];
     }
     
