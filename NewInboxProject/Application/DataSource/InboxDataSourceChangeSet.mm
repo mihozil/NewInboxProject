@@ -9,6 +9,7 @@
 using namespace std;
 #import "InboxDataSourceChangeSet.h"
 #import <UIKit/UIKit.h>
+#import "InboxDataSourceState.h"
 
 // temp support only update remove and insert
 @interface InboxDataSourceChangeSet ()
@@ -24,15 +25,24 @@ using namespace std;
         self.removes = sortArray(remove);
         self.inserts = inserts;
         
-        self.orderedInsertsKey = orderedKeys(inserts);
+        self.orderedInsertKeys = orderedKeys(inserts);
     }
     return self;
 }
 
-- (instancetype)initWithInsertSections:(NSArray*)insertSections {
+- (instancetype)initWithInsertSections:(NSDictionary*)insertSections {
     self = [super init];
     if (self) {
         self.insertSections = insertSections;
+        NSMutableArray *orderKeys = [NSMutableArray new];
+        NSArray *sectionKeys = @[InboxSectionChat,InboxSectionAddFriend];
+        for (NSString *sectionKey in sectionKeys) {
+            NSArray *section = [insertSections objectForKey:sectionKey];
+            if (section) {
+                [orderKeys addObject:sectionKey];
+            }
+        }
+        self.orderedSectionKeys = [orderKeys copy];
     }
     return self;
 }

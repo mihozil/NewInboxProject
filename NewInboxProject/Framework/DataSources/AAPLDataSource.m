@@ -56,11 +56,9 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
 
 @end
 
-
 @interface AAPLLoadingProgress()
 @property (nonatomic, readwrite, getter = isCancelled) BOOL cancelled;
 @end
-
 
 @interface AAPLDataSource () <AAPLStateMachineDelegate>
 @property (nonatomic, strong) NSMutableDictionary *sectionMetrics;

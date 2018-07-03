@@ -70,10 +70,13 @@
     if ([self.item isKindOfClass:[InboxCollectionViewCellItem class]]) {
         InboxCollectionViewCellItem *collectionViewItem = self.item;
         UIImageView *removeImageView = [self.map objectForKey:@(InboxDataSourceCellRemoveImageView)];
-        if (collectionViewItem.selectingInEditingState)
+        if (collectionViewItem.selectingInEditingState) {
             removeImageView.alpha = 1.0;
-        else
+        }
+        else {
             removeImageView.alpha = 0.5;
+        }
+        
     }
 }
 

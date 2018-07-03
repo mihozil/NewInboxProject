@@ -14,10 +14,13 @@
 @property (strong, nonatomic) NSArray *removes;
 @property (strong, nonatomic) NSDictionary *inserts;
 
-@property (strong, nonatomic) NSArray *insertSections;
+@property (strong, nonatomic) NSDictionary *insertSections;
 
-@property (strong, nonatomic) NSArray *orderedInsertsKey;
+@property (strong, nonatomic) NSArray *orderedInsertKeys;
+@property (strong, nonatomic) NSArray *orderedSectionKeys;
 
+
+// temporary if section -> not indexPath and vice verse
 - (instancetype)initWithUpdates:(NSDictionary*)updates removes:(NSArray*)remove inserts:(NSDictionary*)inserts;
 - (instancetype)initWithInsertSections:(NSArray*)insertSections;
 

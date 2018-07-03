@@ -75,11 +75,8 @@
                 return;
             }
     
-            [progress updateWithContent:^(InboxCollectionViewDataSource *me){
-                self.dataSourceDiff = [[InboxDataSourceItemsDiff alloc]initWithOldState:self.dataSourceState newState:state];
-                me.dataSourceState = state;
-                [self.dataSourceDiff implementAnimationCollectionView:self.collectionView];
-                
+            [progress updateWithContent:^(InboxCollectionViewDataSource *me) {
+                [self applyDataSourceStateLoaded:state];
             }];
         }];
     };
@@ -172,13 +169,17 @@
     // update model <items>
     dispatch_block_t block = ^{
         id item = [[_queueDataSourceState objectAtIndexPath:indexPath] copy];
-        if ([item isKindOfClass:[InboxCollectionViewCellItem class]]) {
-            InboxCollectionViewCellItem *collectionViewCellItem = item;
-            collectionViewCellItem.selectingInEditingState = !collectionViewCellItem.selectingInEditingState;
-            NSLog(@"indexPath: %ld",indexPath.item);
-            NSDictionary *updates = @{indexPath:item};
-            InboxDataSourceChangeSet *changeSet = [[InboxDataSourceChangeSet alloc]initWithUpdates:updates removes:nil inserts:nil];
-            [self applyChangeSet:changeSet];
+        if ([item isKindOfClass:[InboxDataSourceItem class]]) {
+            InboxDataSourceItem *newItem = [(InboxDataSourceItem*)item copy];
+            InboxCollectionViewCellItem *cellItem = (InboxCollectionViewCellItem*)newItem.item;
+            
+            if ([cellItem isKindOfClass:[InboxCollectionViewCellItem class]]) {
+                cellItem.selectingInEditingState = !cellItem.selectingInEditingState;
+                
+                NSDictionary *updates = @{indexPath:newItem};
+                InboxDataSourceChangeSet *changeSet = [[InboxDataSourceChangeSet alloc]initWithUpdates:updates removes:nil inserts:nil];
+                [self applyChangeSet:changeSet];
+            }
         }
     };
     
@@ -233,7 +234,7 @@
         [section replaceObjectAtIndex:indexPath.item withObject:[changeSet.updates objectForKey:indexPath]];
     }
     
-    for (NSIndexPath *indexPath in changeSet.orderedInsertsKey) {
+    for (NSIndexPath *indexPath in changeSet.orderedInsertKeys) {
         NSMutableArray *section = [newSections.allValues objectAtIndex:indexPath.section];
         [section insertObject:[changeSet.inserts objectForKey:indexPath]  atIndex:indexPath.item];
     }
@@ -243,9 +244,16 @@
         [section removeObjectAtIndex:indexPath.item];
     }
     
-//    for (NSArray *)
+    for (NSString *sectionKey in changeSet.orderedSectionKeys) {
+        [newSections setObject:[changeSet.insertSections objectForKey:sectionKey] forKey:sectionKey];
+    }
     
     _queueDataSourceState = [[InboxDataSourceState alloc]initWithSectionsDic:newSections];
+    [self updateDatasourceState];
+}
+
+- (void)applyDataSourceStateLoaded:(InboxDataSourceState*)newState {
+    _queueDataSourceState = newState;
     [self updateDatasourceState];
 }
 
