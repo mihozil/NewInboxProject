@@ -69,7 +69,7 @@ NSArray* sortArray(NSArray*arr) {
     NSMutableArray *sortedArr = [NSMutableArray new];
     for (auto it = mySet.begin(); it!=mySet.end(); it++) {
         NSIndexPath *indexPath = *it;
-        [sortedArr addObject:indexPath];
+        [sortedArr insertObject:indexPath atIndex:0];
     }
     return [sortedArr copy];
 }

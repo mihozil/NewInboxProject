@@ -18,6 +18,7 @@
 #import "InboxDataSourceState.h"
 #import "InboxCollectionViewCellItem.h"
 #import "InboxDataSourceChangeSet.h"
+#import "InboxCollectionViewUpdater.h"
 
 @interface InboxCollectionViewDataSource()
 
@@ -54,30 +55,32 @@
 - (void)loadContentWithProgress:(AAPLLoadingProgress *)progress {
     loadContentCompletion loadCompletion = ^(InboxDataSourceState* state, NSError* error) { // state here copy already
         
+        _queueDataSourceState = state;
+        
+        // in the future: remove .. .
         [TSHelper dispatchOnMainQueue:^{
             if (progress.cancelled)
                 return;
             
             if (error) {
-                [progress doneWithError:error]; // this case check later: if there are being items and than loadError
-                // placeholder: stateMachine -> didEnterState -> performInternalUpdate.. -> performBatchUpdate
+                // later
+                self.loadingError = error;
+                self.loadingState = AAPLLoadStateError;
                 return;
             }
             
             // temporary put dataSourceDiff here
             if (!state || state.sectionsDic.count==0) {
-                [progress updateWithNoContent:^(InboxCollectionViewDataSource *me) {
-                    self.dataSourceDiff = [[InboxDataSourceItemsDiff alloc]initWithOldState:self.dataSourceState newState:state];
-                    me.dataSourceState = state;
-                    [self.dataSourceDiff implementAnimationCollectionView:self.collectionView];
-                    // this is temporary. should only be diff for load content <kind of like that>
-                }];
+                self.loadingError = error;
+                self.loadingState = AAPLLoadStateNoContent;
+                // update later
                 return;
             }
-    
-            [progress updateWithContent:^(InboxCollectionViewDataSource *me) {
-                [self applyDataSourceStateLoaded:state];
-            }];
+            
+            self.loadingError = error;
+            self.loadingState = AAPLLoadStateContentLoaded;
+            [self applyDataSourceStateLoaded:state];
+            
         }];
     };
     
@@ -134,13 +137,9 @@
              ]; // temp keep this flow
 }
 
-#pragma mark actions
-
-- (void)tickleCell:(id)sender {
-    
-}
 
 #pragma mark update
+
 
 - (void)updateDatasourceState {
     __block InboxDataSourceState *updateState = [_queueDataSourceState copy]; // no need copy here. later
@@ -151,6 +150,10 @@
             [self.dataSourceDiff implementAnimationCollectionView:self.collectionView];
         }];
     }]; // call animation directly from here
+}
+
+- (void)performUpdate:(dispatch_block_t)update {
+    [InboxCollectionViewUpdater performBatchUpdateCollectionView:self.collectionView withUpdate:update completion:nil];
 }
 
 // minhnht update
@@ -176,7 +179,6 @@
             
             if ([cellItem isKindOfClass:[InboxCollectionViewCellItem class]]) {
                 cellItem.selectingInEditingState = !cellItem.selectingInEditingState;
-                NSLog(@"old new: %d %d",[[(InboxDataSourceItem*)item item]selectingInEditingState],[[(InboxDataSourceItem*)newItem item]selectingInEditingState]);
                 
                 NSDictionary *updates = @{indexPath:newItem};
                 InboxDataSourceChangeSet *changeSet = [[InboxDataSourceChangeSet alloc]initWithUpdates:updates removes:nil inserts:nil];
@@ -192,6 +194,9 @@
     dispatch_block_t block = ^{
         NSArray *removes = [_queueDataSourceState selectingIndexPathInEditingState];
         InboxDataSourceChangeSet *changeSet = [[InboxDataSourceChangeSet alloc]initWithUpdates:nil removes:removes inserts:nil];
+        NSLog(@"removes:");
+        for (NSIndexPath *indexPath in changeSet.removes)
+            NSLog(@"remove %ld",indexPath.item);
         [self applyChangeSet:changeSet];
     };
     [TSHelper dispatchOnQueue:_actionQueue withName:_actionQueueName withTask:block];
@@ -233,7 +238,7 @@
     
     for (NSIndexPath *indexPath in changeSet.updates.allKeys) {
         NSMutableArray *section = [newSections.allValues objectAtIndex:indexPath.section];
-//        NSLog(@"minhnht: indexPath - selecting: %ld %ld",indexPath.item,[[(InboxDataSourceItem*)[changeSet.updates objectForKey:indexPath] item]selectingInEditingState]);
+        //        NSLog(@"minhnht: indexPath - selecting: %ld %ld",indexPath.item,[[(InboxDataSourceItem*)[changeSet.updates objectForKey:indexPath] item]selectingInEditingState]);
         [section replaceObjectAtIndex:indexPath.item withObject:[changeSet.updates objectForKey:indexPath]];
     }
     
@@ -256,8 +261,10 @@
 }
 
 - (void)applyDataSourceStateLoaded:(InboxDataSourceState*)newState {
+    
     _queueDataSourceState = newState;
     [self updateDatasourceState];
 }
 
 @end
+

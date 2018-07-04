@@ -79,12 +79,13 @@
         [collectionView insertItemsAtIndexPaths:_insertIndexPaths];
     if (_deleteIndexPaths.count>0)
         [collectionView deleteItemsAtIndexPaths:_deleteIndexPaths];
-    for (NSDictionary *move in _moves) {
-        NSIndexPath *from = [move objectForKey:@"from"];
-        NSIndexPath *to = [move objectForKey:@"to"];
-        if ([from isKindOfClass:[NSIndexPath class]] && [to isKindOfClass:[NSIndexPath class]])
-            [collectionView moveItemAtIndexPath:from toIndexPath:to];
-    }
+//    for (NSDictionary *move in _moves) {
+//        NSIndexPath *from = [move objectForKey:@"from"];
+//        NSIndexPath *to = [move objectForKey:@"to"];
+//        if ([from isKindOfClass:[NSIndexPath class]] && [to isKindOfClass:[NSIndexPath class]])
+//            [collectionView moveItemAtIndexPath:from toIndexPath:to];
+//    }
+    // temp no move
     if (_reloadIndexPaths.count>0)
         [collectionView reloadItemsAtIndexPaths:_reloadIndexPaths];
 }

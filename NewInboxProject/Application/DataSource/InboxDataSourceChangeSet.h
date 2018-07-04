@@ -11,12 +11,12 @@
 @interface InboxDataSourceChangeSet : NSObject
 
 @property (strong, nonatomic) NSDictionary<NSIndexPath*,id> *updates;
-@property (strong, nonatomic) NSArray *removes;
+@property (strong, nonatomic) NSArray *removes; // big to small
 @property (strong, nonatomic) NSDictionary *inserts;
 
 @property (strong, nonatomic) NSDictionary *insertSections;
 
-@property (strong, nonatomic) NSArray *orderedInsertKeys;
+@property (strong, nonatomic) NSArray *orderedInsertKeys; // small to big
 @property (strong, nonatomic) NSArray *orderedSectionKeys;
 
 
