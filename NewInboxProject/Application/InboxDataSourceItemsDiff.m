@@ -77,8 +77,13 @@
     
     if (_insertIndexPaths.count>0)
         [collectionView insertItemsAtIndexPaths:_insertIndexPaths];
+    NSLog(@"animation: insert: %ld",_insertIndexPaths.count);
+    
     if (_deleteIndexPaths.count>0)
         [collectionView deleteItemsAtIndexPaths:_deleteIndexPaths];
+    NSLog(@"animation: delete: %ld",_deleteIndexPaths.count);
+    for (NSIndexPath *indexPath in _deleteIndexPaths)
+        NSLog(@"animation: indexPath: %ld",indexPath.item);
 //    for (NSDictionary *move in _moves) {
 //        NSIndexPath *from = [move objectForKey:@"from"];
 //        NSIndexPath *to = [move objectForKey:@"to"];
@@ -88,6 +93,7 @@
     // temp no move
     if (_reloadIndexPaths.count>0)
         [collectionView reloadItemsAtIndexPaths:_reloadIndexPaths];
+    NSLog(@"animation: reload: %ld",_reloadIndexPaths.count);
 }
 
 @end

@@ -86,7 +86,7 @@
     InboxCollectionViewCellItem *item = (InboxCollectionViewCellItem*)self.item;
     
     if ([item isKindOfClass:[InboxCollectionViewCellItem class]]) {
-        NSString *diffId = [NSString stringWithFormat:@"%@",item.title];
+        NSString *diffId = [NSString stringWithFormat:@"%@_%@",item.title,item.caption];
         return diffId;
     }
     return @"AnEmptyString";
