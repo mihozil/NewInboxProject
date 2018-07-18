@@ -36,9 +36,9 @@ typedef struct InboxDataSourceItemLayout InboxDataSourceItemLayout;
 @interface InboxDataSourceItem : NSObject <NSCopying>
 
 @property (nonatomic) InboxDataSourceItemLayout layout;
-@property (strong, nonatomic) id item;
+@property (strong, nonatomic) id model;
 
-- (id)initWithItemLayout:(InboxDataSourceItemLayout)layout item:(id)item;
+- (id)initWithItemLayout:(InboxDataSourceItemLayout)layout model:(id)model;
 - (void)configViewWithMap:(NSDictionary *)map cellContentView:(UIView*)contentView;
 
 @end

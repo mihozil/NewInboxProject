@@ -17,6 +17,8 @@
 #import "AAPLDataSourceMetrics_Private.h"
 #import "AAPLDebug.h"
 
+#import "AAPLSectionHeaderView.h"
+
 static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecificKey";
 
 #define AAPL_ASSERT_MAIN_THREAD NSAssert([NSThread isMainThread], @"This method must be called on the main thread")
@@ -89,6 +91,7 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
 
 - (BOOL)isRootDataSource
 {
+    return false; // minhnht changed
     id delegate = self.delegate;
     return [delegate isKindOfClass:[AAPLDataSource class]] ? NO : YES;
 }
@@ -143,20 +146,23 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
 
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
-    NSInteger numberOfSections = self.numberOfSections;
+    // minhnht changed
+//    NSInteger numberOfSections = self.numberOfSections;
 
-    AAPLDataSourceSectionMetrics *globalMetrics = [self snapshotMetricsForSectionAtIndex:AAPLGlobalSectionIndex];
-    for (AAPLSupplementaryItem* headerMetrics in globalMetrics.headers)
-        [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
-
-    for (NSInteger sectionIndex = 0; sectionIndex < numberOfSections; ++sectionIndex) {
-        AAPLDataSourceSectionMetrics *metrics = [self snapshotMetricsForSectionAtIndex:sectionIndex];
-
-        for (AAPLSupplementaryItem* headerMetrics in metrics.headers)
-            [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
-        for (AAPLSupplementaryItem* footerMetrics in metrics.footers)
-            [collectionView registerClass:footerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerMetrics.reuseIdentifier];
-    }
+//    AAPLDataSourceSectionMetrics *globalMetrics = [self snapshotMetricsForSectionAtIndex:AAPLGlobalSectionIndex];
+//    for (AAPLSupplementaryItem* headerMetrics in globalMetrics.headers)
+//        [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+//
+//    for (NSInteger sectionIndex = 0; sectionIndex < numberOfSections; ++sectionIndex) {
+//        AAPLDataSourceSectionMetrics *metrics = [self snapshotMetricsForSectionAtIndex:sectionIndex];
+//
+//        for (AAPLSupplementaryItem* headerMetrics in metrics.headers)
+//            [collectionView registerClass:headerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerMetrics.reuseIdentifier];
+//        for (AAPLSupplementaryItem* footerMetrics in metrics.footers)
+//            [collectionView registerClass:footerMetrics.supplementaryViewClass forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerMetrics.reuseIdentifier];
+//    }
+    
+    [collectionView registerClass:[AAPLSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([AAPLSectionHeaderView class])];
 
     [collectionView registerClass:[AAPLCollectionPlaceholderView class] forSupplementaryViewOfKind:AAPLCollectionElementKindPlaceholder withReuseIdentifier:AAPLReusableIdentifierFromClass(AAPLCollectionPlaceholderView)];
 }
@@ -571,13 +577,22 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
             return;
         }
 
-        if (0 == sectionIndex && !rootDataSource) {
-            if (itemIndex < (NSInteger)_headers.count)
-                return block(self, indexPath, _headers[itemIndex]);
-
-            // need to allow for the headers that were added from the "global" data source headers.
-            itemIndex -= _headers.count;
+        // minhnht changed
+//        if (0 == sectionIndex && !rootDataSource) {
+//            if (itemIndex < (NSInteger)_headers.count)
+//                return block(self, indexPath, _headers[itemIndex]);
+//
+//            // need to allow for the headers that were added from the "global" data source headers.
+//            itemIndex -= _headers.count;
+//        }
+        // minhnht added
+        if ([_headersByKey objectForKey:@(indexPath.section)]) {
+            return block(self, indexPath, _headersByKey[@(indexPath.section)]);
         }
+        
+                    // need to allow for the headers that were added from the "global" data source headers.
+                    itemIndex -= _headers.count;
+
 
         // check for headers in the default metrics
         AAPLDataSourceSectionMetrics *defaultMetrics = (AAPLDataSourceSectionMetrics *)self.defaultMetrics;
@@ -623,16 +638,19 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
     metrics.placeholder = self.placeholder;
 
     // We need to handle global headers and the placeholder view for section 0
-    if (!sectionIndex) {
-        NSMutableArray *headers = [NSMutableArray array];
-
-        if (_headers && !rootDataSource)
-            [headers addObjectsFromArray:_headers];
-
-        if (metrics.headers)
-            [headers addObjectsFromArray:metrics.headers];
-
-        metrics.headers = headers;
+    
+    
+    if (sectionIndex!=AAPLGlobalSectionIndex && [_headersByKey objectForKey:@(sectionIndex)]) { // minhnht changed
+        metrics.headers = [NSArray arrayWithObject:[_headersByKey objectForKey:@(sectionIndex)]];
+//        NSMutableArray *headers = [NSMutableArray array];
+//
+//        if (_headers && !rootDataSource)
+//            [headers addObjectsFromArray:_headers];
+//
+//        if (metrics.headers)
+//            [headers addObjectsFromArray:metrics.headers];
+//
+//            metrics.headers = headers;
     }
 
     return metrics;
@@ -660,6 +678,31 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
     return _headersByKey[key];
 }
 
+// minhnht changed : not go through AAPLDatasource + header
+
+- (void)removeAllHeaders {
+    [_headers removeAllObjects];
+    [_headersByKey removeAllObjects];
+}
+
+- (void)createNewHeaderForKey:(id)key withTitle:(NSString*)title { // key: section index
+    if (!_headers)
+        _headers = [NSMutableArray array];
+    if (!_headersByKey)
+        _headersByKey = [NSMutableDictionary dictionary];
+    
+    NSAssert(!_headersByKey[key], @"Attempting to add a header for a key that already exists: %@", key);
+    
+    AAPLSupplementaryItem *header = [[AAPLSupplementaryItem alloc] initWithElementKind:UICollectionElementKindSectionHeader];
+    _headersByKey[key] = header;
+    [_headers addObject:header];
+    
+    header.supplementaryViewClass = [AAPLSectionHeaderView class];
+    header.configureView = ^(AAPLSectionHeaderView *view, AAPLDataSource *dataSource, NSIndexPath *indexPath) {
+        view.leftText = title;
+    };
+}
+
 - (AAPLSupplementaryItem *)newHeaderForKey:(NSString *)key
 {
     if (!_headers)
@@ -672,6 +715,7 @@ static void *AAPLPerformUpdateQueueSpecificKey = "AAPLPerformUpdateQueueSpecific
     AAPLSupplementaryItem *header = [[AAPLSupplementaryItem alloc] initWithElementKind:UICollectionElementKindSectionHeader];
     _headersByKey[key] = header;
     [_headers addObject:header];
+    
     return header;
 }
 

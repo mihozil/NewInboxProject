@@ -115,5 +115,25 @@
                     "lastUpdate" : "2 minutes"
                 }
 
+    ],
+    "requests" : [
+                 {
+                    "identifier" : "0",
+                    "title" : "Iron man",
+                    "icon" : "friendRequest",
+                    "detail" : "From Contact",
+                 },
+                 {
+                    "identifier" : "1",
+                    "title" : "Super Man",
+                    "icon" : "friendRequest",
+                    "detail" : "From Contact",
+                 },
+                 {
+                    "identifier" : "2",
+                    "title" : "Hulk",
+                    "icon" : "friendRequest",
+                    "detail" : "from Contact",
+                 }
     ]
 }

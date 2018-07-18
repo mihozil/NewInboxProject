@@ -12,6 +12,9 @@
 #import "InboxCollectionViewUpdater.h"
 #import "InboxDataSourceItemsDiff.h"
 #import "InboxLoadingView.h"
+#import "InboxNoContentView.h"
+#import "InboxErrorView.h"
+#import "AAPLDataSource+Headers.h"
 
 @interface InboxCollectionViewController () <UICollectionViewDelegateFlowLayout,InboxCollectionViewDataSourceDelegate>
 
@@ -21,6 +24,8 @@
 
 @implementation InboxCollectionViewController {
     InboxLoadingView *_loadingView;
+    InboxNoContentView *_noContentView;
+    InboxErrorView *_errorView;
 }
 
 #pragma mark life-Cycle
@@ -100,6 +105,26 @@
 - (void)dataSourceDidExitLoadingState:(InboxCollectionViewDataSource *)dataSource {
     [_loadingView removeFromSuperview];
     _loadingView = nil;
+}
+
+- (void)dataSourceDidEnterNoContentState:(InboxCollectionViewDataSource *)dataSource {
+    _noContentView = [[InboxNoContentView alloc]initWithFrame:self.collectionView.frame];
+    [self.view addSubview:_noContentView];
+}
+
+- (void)dataSourceDidExitNoContentState:(InboxCollectionViewDataSource *)dataSource {
+    [_noContentView removeFromSuperview];
+    _noContentView = nil;
+}
+
+- (void)dataSourceDidEnterErrorState:(InboxCollectionViewDataSource *)dataSource {
+    _errorView = [[InboxErrorView alloc]initWithFrame:self.collectionView.frame];
+    [self.view addSubview:_errorView];
+}
+
+- (void)dataSourceDidExitErrorState:(InboxCollectionViewDataSource *)dataSource {
+    [_errorView removeFromSuperview];
+    _errorView = nil;
 }
 
 

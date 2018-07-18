@@ -7,7 +7,7 @@
 
 #import "InboxDataSourceItem.h"
 #import "IGListDiff.h"
-#import "InboxCollectionViewCellItem.h"
+#import "InboxCollectionViewCellModel.h"
 #include <queue>
 
 @interface InboxDataSourceItem() <IGListDiffable>
@@ -19,11 +19,11 @@
 
 @implementation InboxDataSourceItem
 
-- (id)initWithItemLayout:(InboxDataSourceItemLayout)layout item:(id)item {
+- (id)initWithItemLayout:(InboxDataSourceItemLayout)layout model:(id)model {
     self = [super init];
     if (self) {
         self.layout = layout;
-        self.item = item;
+        self.model = model;
     }
     return self;
 }
@@ -67,9 +67,10 @@
 }
 
 - (void)configDefaultView {
-    if ([self.item isKindOfClass:[InboxCollectionViewCellItem class]]) {
-        InboxCollectionViewCellItem *collectionViewItem = self.item;
+    if ([self.model isKindOfClass:[InboxCollectionViewCellModel class]]) {
+        InboxCollectionViewCellModel *collectionViewItem = self.model;
         UIImageView *removeImageView = [self.map objectForKey:@(InboxDataSourceCellRemoveImageView)];
+        
         if (collectionViewItem.selectingInEditingState) {
             removeImageView.alpha = 1.0;
         }
@@ -83,9 +84,9 @@
 #pragma mark other
 
 - (id<NSObject>)diffIdentifier {
-    InboxCollectionViewCellItem *item = (InboxCollectionViewCellItem*)self.item;
+    InboxCollectionViewCellModel *item = (InboxCollectionViewCellModel*)self.model;
     
-    if ([item isKindOfClass:[InboxCollectionViewCellItem class]]) {
+    if ([item isKindOfClass:[InboxCollectionViewCellModel class]]) {
         NSString *diffId = [NSString stringWithFormat:@"%@_%@",item.title,item.caption];
         return diffId;
     }
@@ -93,14 +94,14 @@
 }
 
 - (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
-    InboxCollectionViewCellItem *firstItem = (InboxCollectionViewCellItem*)self.item;
-    InboxCollectionViewCellItem *secondItem = [(InboxDataSourceItem*)object item];
+    InboxCollectionViewCellModel *firstModel = (InboxCollectionViewCellModel*)self.model;
+    InboxCollectionViewCellModel *secondModel = [(InboxDataSourceItem*)object model];
 
-    if ([secondItem isKindOfClass:[InboxCollectionViewCellItem class]]) {
-        if (firstItem.selectingInEditingState != secondItem.selectingInEditingState) {
+    if ([secondModel isKindOfClass:[InboxCollectionViewCellModel class]]) {
+        if (firstModel.selectingInEditingState != secondModel.selectingInEditingState) {
             return false;
         }
-        if (firstItem.selectingInEditingState == 1 || secondItem.selectingInEditingState ==1) {
+        if (firstModel.selectingInEditingState == 1 || secondModel.selectingInEditingState ==1) {
             
         }
     }
@@ -111,8 +112,8 @@
 - (id)copyWithZone:(NSZone *)zone {
     InboxDataSourceItem *newItem = [[InboxDataSourceItem alloc]init];
     newItem.layout = self.layout;
-    newItem.item = [self.item copy];
-    NSLog(@"old - new cellItem: %@ %@",self.item,newItem.item);
+    newItem.model = [self.model copy];
+    
     return newItem;
 }
 

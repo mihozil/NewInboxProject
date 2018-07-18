@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ not yet support: removeSection
+ */
 @interface InboxDataSourceChangeSet : NSObject
 
 @property (strong, nonatomic) NSDictionary<NSIndexPath*,id> *updates;
@@ -15,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *inserts;
 
 @property (strong, nonatomic) NSDictionary *insertSections;
+@property (strong, nonatomic) NSArray *removeSections;
 
 @property (strong, nonatomic) NSArray *orderedInsertKeys; // small to big
 @property (strong, nonatomic) NSArray *orderedSectionKeys;

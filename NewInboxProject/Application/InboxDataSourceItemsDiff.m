@@ -40,7 +40,7 @@
         NSArray *oldSection = [oldState.sectionsDic objectForKey:key];
         NSArray *newSection = [newState.sectionsDic objectForKey:key];
         if (oldSection && newSection) {
-            IGListIndexPathResult *result = IGListDiffPaths(0, 0, oldSection, newSection, IGListDiffEquality);
+            IGListIndexPathResult *result = IGListDiffPaths([oldState.sections indexOfObject:oldSection], [newState.sections indexOfObject:newSection], oldSection, newSection, IGListDiffEquality);
             
             [self.insertIndexPaths addObjectsFromArray:result.inserts];
             [self.deleteIndexPaths addObjectsFromArray:result.deletes];
@@ -50,13 +50,21 @@
             }
         }
         if (oldSection && !newSection) {
-            [self.deleteSections addIndex:[oldState.sectionsDic.allKeys indexOfObject:key]];
+            [self.deleteSections addIndex:[oldState.sections indexOfObject:oldSection]];
         }
         if (!oldSection && newSection) {
-            [self.insertSections addIndex:[newState.sectionsDic.allKeys indexOfObject:key]];
+            [self.insertSections addIndex:[newState.sections indexOfObject:newSection]];
         }
     }
     
+}
+
+- (NSArray*)convertIndexPaths:(NSArray*)indexPaths toSection:(NSInteger)section {
+    NSMutableArray *newIndexPaths = [NSMutableArray new];
+    for (NSIndexPath *indexPath in indexPaths) {
+        [newIndexPaths addObject:[NSIndexPath indexPathForItem:indexPath.item inSection:section]];
+    }
+    return newIndexPaths;
 }
 
 - (void)resetAnimation {

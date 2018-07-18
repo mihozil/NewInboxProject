@@ -17,7 +17,10 @@
 @optional
 - (void)dataSourceDidEnterLoadingState:(InboxCollectionViewDataSource*)dataSource;
 - (void)dataSourceDidExitLoadingState:(InboxCollectionViewDataSource*)dataSource;
-
+- (void)dataSourceDidEnterNoContentState:(InboxCollectionViewDataSource*)dataSource;
+- (void)dataSourceDidExitNoContentState:(InboxCollectionViewDataSource*)dataSource;
+- (void)dataSourceDidEnterErrorState:(InboxCollectionViewDataSource*)dataSource;
+- (void)dataSourceDidExitErrorState:(InboxCollectionViewDataSource*)dataSource;
 @end
 
 @interface InboxCollectionViewDataSource : AAPLDataSource

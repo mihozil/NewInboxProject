@@ -7,7 +7,7 @@
 
 #import "InboxCollectionViewCell.h"
 #import "InboxDataSourceItem.h"
-#import "InboxCollectionViewCellItem.h"
+#import "InboxCollectionViewCellModel.h"
 #include <queue>
 
 @interface InboxCollectionViewCell ()

@@ -6,12 +6,12 @@
 //  Copyright © 2018 CPU11806. All rights reserved.
 //
 
-#import "InboxCollectionViewCellItem.h"
+#import "InboxCollectionViewCellModel.h"
 
-@implementation InboxCollectionViewCellItem
+@implementation InboxCollectionViewCellModel
 
 - (id)copyWithZone:(NSZone *)zone {
-    InboxCollectionViewCellItem *newItem = [[InboxCollectionViewCellItem alloc] init];
+    InboxCollectionViewCellModel *newItem = [[InboxCollectionViewCellModel alloc] init];
     newItem.avatarUrl = self.avatarUrl;
     newItem.title = self.title;
     newItem.caption = self.caption;

@@ -91,7 +91,7 @@
     typedef BOOL (*ObjCMsgSendReturnBoolWithId)(id, SEL, id);
     ObjCMsgSendReturnBoolWithId shouldBegin = (ObjCMsgSendReturnBoolWithId)objc_msgSend;
     BOOL shouldBeginGesture = shouldBegin(self.target, self.shouldBegin, gestureRecognizer);
-    NSLog(@"shouldBeginGesture: %ld",shouldBeginGesture);
+    
     return shouldBeginGesture;
 }
 
@@ -386,7 +386,6 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
     // minhnht note: editingCell = nil?
 }
 
-
 - (void)didExitIdleState
 {
     self.panWrapper.shouldBegin = NULL;
@@ -430,6 +429,8 @@ NSString * const AAPLSwipeStateOpen = @"OpenState";
     // only if it's a AAPLCollectionViewCell
     CGPoint position = [panGestureRecognizer locationInView:_collectionView];
     NSIndexPath *panCellPath = [_collectionView indexPathForItemAtPoint:position];
+    NSLog(@"minhnht: panCellPath: %2.2f %2.2f %ld",position.x,position.y,panCellPath.item);
+    
     CGPoint velocity = [panGestureRecognizer velocityInView:_collectionView];
     AAPLCollectionViewCell *cell = (AAPLCollectionViewCell *)[_collectionView cellForItemAtIndexPath:panCellPath];
     

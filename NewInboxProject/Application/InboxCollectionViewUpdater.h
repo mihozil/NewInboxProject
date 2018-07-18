@@ -10,8 +10,14 @@
 #import <UIKit/UIKit.h>
 @class InboxDataSourceItemsDiff;
 
+/*
+ the class implement the data and uiUpdate of collectionView:
+ updateBlock: update data and update UI
+ completionBlock: completion
+ */
 @interface InboxCollectionViewUpdater : NSObject
 
++ (void)forceReloadCollectionView:(UICollectionView*)collectionView withUpdate:(dispatch_block_t)update completion:(dispatch_block_t)completion;
 + (void)performBatchUpdateCollectionView:(UICollectionView*)collectionView withUpdate:(dispatch_block_t)update completion:(dispatch_block_t) completion;
 
 @end

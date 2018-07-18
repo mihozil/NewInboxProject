@@ -11,6 +11,11 @@
 @class InboxDataSourceState;
 
 typedef void (^loadContentCompletion)(InboxDataSourceState*, NSError*);
+
+/*
+ This should be rename InboxDataManager: handle even from model<entity> and doing logic before updating to View/ViewController
+ <all these moved from dataSource just to reduce mass dataSource>
+ */
 @interface InboxDataLoader : NSObject
 
 - (id)initWithActionQueue:(dispatch_queue_t)actionQueue actionQueueName:(const char*)actionQueueName;

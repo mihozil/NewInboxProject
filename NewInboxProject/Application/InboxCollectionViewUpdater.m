@@ -12,12 +12,32 @@ static BOOL _performingAnimation;
 static dispatch_block_t _completionHandle;
 @implementation InboxCollectionViewUpdater
 
++ (void)forceReloadCollectionView:(UICollectionView*)collectionView withUpdate:(dispatch_block_t)update completion:(dispatch_block_t)completion {
+    
+    dispatch_block_t enqueueCompletion = ^{
+        if (completion) {
+            dispatch_block_t oldCompletion = _completionHandle;
+            _completionHandle = ^{
+                if (oldCompletion)
+                    oldCompletion();
+                completion();
+            };
+            
+        }
+    };
+    
+    if (update)
+        update();
+    [collectionView reloadData];
+    enqueueCompletion();
+}
+
+/*
+ only one animation at once. if other -> performWithoutAnimation & enqueueCompletion
+ similar for reload
+ */
 + (void)performBatchUpdateCollectionView:(UICollectionView*)collectionView withUpdate:(dispatch_block_t)update completion:(dispatch_block_t) completion {
     
-    dispatch_block_t batchUpdate = ^{
-        if (update)
-            update();
-    };
     dispatch_block_t enqueueCompletion = ^{
         if (completion) {
             dispatch_block_t oldCompletion = _completionHandle;
@@ -26,19 +46,18 @@ static dispatch_block_t _completionHandle;
                     oldCompletion();    
                 completion();
             };
-            
         }
     };
     
     if (_performingAnimation) {
         enqueueCompletion();
-        batchUpdate();
+        update(); // including perform - animation
         return;
     }
     
     [collectionView performBatchUpdates:^{
         enqueueCompletion();
-        batchUpdate();
+        update();
         _performingAnimation = true;
     } completion:^(BOOL finished){
         if (_completionHandle)

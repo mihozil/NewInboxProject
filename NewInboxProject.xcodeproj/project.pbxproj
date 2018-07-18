@@ -57,7 +57,7 @@
 		BA938EC120B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC020B7FB0D00CCBE90 /* InboxCollectionViewDataSource.mm */; };
 		BA938EC420B8037400CCBE90 /* InboxDataLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */; };
 		BA938EC620B8060900CCBE90 /* chat.json in Resources */ = {isa = PBXBuildFile; fileRef = BA938EC520B8060900CCBE90 /* chat.json */; };
-		BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */; };
+		BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellModel.m */; };
 		BA9C6AEE20BD424300692BDA /* InboxDataSourceItemsDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9C6AED20BD424300692BDA /* InboxDataSourceItemsDiff.m */; };
 		BAA5F0FC20BD4CC000F85816 /* IGListBatchUpdateData.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0E220BD4CC000F85816 /* IGListBatchUpdateData.mm */; };
 		BAA5F0FD20BD4CC000F85816 /* IGListDiff.mm in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0E520BD4CC000F85816 /* IGListDiff.mm */; };
@@ -67,6 +67,10 @@
 		BAA5F10120BD4CC000F85816 /* IGListMoveIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0F120BD4CC000F85816 /* IGListMoveIndexPath.m */; };
 		BAA5F10220BD4CC000F85816 /* NSNumber+IGListDiffable.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0F920BD4CC000F85816 /* NSNumber+IGListDiffable.m */; };
 		BAA5F10320BD4CC000F85816 /* NSString+IGListDiffable.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA5F0FB20BD4CC000F85816 /* NSString+IGListDiffable.m */; };
+		E30DFF6620F889CB0008761B /* InboxSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E30DFF6520F889CB0008761B /* InboxSectionHeaderView.m */; };
+		E3F6D19320F73DBF008F5867 /* InboxNoContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F6D19220F73DBF008F5867 /* InboxNoContentView.m */; };
+		E3F6D19620F74261008F5867 /* InboxErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F6D19520F74261008F5867 /* InboxErrorView.m */; };
+		E3F6D19F20F7605C008F5867 /* InboxCellLayout.mm in Sources */ = {isa = PBXBuildFile; fileRef = E3F6D19E20F7605C008F5867 /* InboxCellLayout.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,8 +198,8 @@
 		BA938EC220B8037400CCBE90 /* InboxDataLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataLoader.h; sourceTree = "<group>"; };
 		BA938EC320B8037400CCBE90 /* InboxDataLoader.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxDataLoader.mm; sourceTree = "<group>"; };
 		BA938EC520B8060900CCBE90 /* chat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = chat.json; sourceTree = "<group>"; };
-		BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewCellItem.h; sourceTree = "<group>"; };
-		BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxCollectionViewCellItem.m; sourceTree = "<group>"; };
+		BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCollectionViewCellModel.h; sourceTree = "<group>"; };
+		BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxCollectionViewCellModel.m; sourceTree = "<group>"; };
 		BA9C6AEC20BD424300692BDA /* InboxDataSourceItemsDiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxDataSourceItemsDiff.h; sourceTree = "<group>"; };
 		BA9C6AED20BD424300692BDA /* InboxDataSourceItemsDiff.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxDataSourceItemsDiff.m; sourceTree = "<group>"; };
 		BAA5F0E020BD4CC000F85816 /* IGListAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGListAssert.h; sourceTree = "<group>"; };
@@ -225,6 +229,14 @@
 		BAA5F0F920BD4CC000F85816 /* NSNumber+IGListDiffable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+IGListDiffable.m"; sourceTree = "<group>"; };
 		BAA5F0FA20BD4CC000F85816 /* NSString+IGListDiffable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IGListDiffable.h"; sourceTree = "<group>"; };
 		BAA5F0FB20BD4CC000F85816 /* NSString+IGListDiffable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IGListDiffable.m"; sourceTree = "<group>"; };
+		E30DFF6420F889CB0008761B /* InboxSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxSectionHeaderView.h; sourceTree = "<group>"; };
+		E30DFF6520F889CB0008761B /* InboxSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxSectionHeaderView.m; sourceTree = "<group>"; };
+		E3F6D19120F73DBF008F5867 /* InboxNoContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxNoContentView.h; sourceTree = "<group>"; };
+		E3F6D19220F73DBF008F5867 /* InboxNoContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxNoContentView.m; sourceTree = "<group>"; };
+		E3F6D19420F74261008F5867 /* InboxErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxErrorView.h; sourceTree = "<group>"; };
+		E3F6D19520F74261008F5867 /* InboxErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InboxErrorView.m; sourceTree = "<group>"; };
+		E3F6D19D20F7605C008F5867 /* InboxCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InboxCellLayout.h; sourceTree = "<group>"; };
+		E3F6D19E20F7605C008F5867 /* InboxCellLayout.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = InboxCellLayout.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +278,12 @@
 			children = (
 				BA6547AB20DA3B9600FDB314 /* InboxLoadingView.h */,
 				BA6547AC20DA3B9600FDB314 /* InboxLoadingView.m */,
+				E3F6D19120F73DBF008F5867 /* InboxNoContentView.h */,
+				E3F6D19220F73DBF008F5867 /* InboxNoContentView.m */,
+				E3F6D19420F74261008F5867 /* InboxErrorView.h */,
+				E3F6D19520F74261008F5867 /* InboxErrorView.m */,
+				E30DFF6420F889CB0008761B /* InboxSectionHeaderView.h */,
+				E30DFF6520F889CB0008761B /* InboxSectionHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -475,6 +493,7 @@
 		BA938EB420B7F97600CCBE90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E3F6D19C20F75FC9008F5867 /* DataSourceLayout */,
 				BA938EB620B7F9B200CCBE90 /* Items */,
 			);
 			path = Model;
@@ -485,8 +504,8 @@
 			children = (
 				BA938E3F20B7F6A100CCBE90 /* InboxDataSourceItem.h */,
 				BA938E4020B7F6A100CCBE90 /* InboxDataSourceItem.mm */,
-				BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellItem.h */,
-				BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellItem.m */,
+				BA938EC720B80F5300CCBE90 /* InboxCollectionViewCellModel.h */,
+				BA938EC820B80F5300CCBE90 /* InboxCollectionViewCellModel.m */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -554,6 +573,15 @@
 				BAA5F0F720BD4CC000F85816 /* IGListMoveIndexPathInternal.h */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		E3F6D19C20F75FC9008F5867 /* DataSourceLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E3F6D19D20F7605C008F5867 /* InboxCellLayout.h */,
+				E3F6D19E20F7605C008F5867 /* InboxCellLayout.mm */,
+			);
+			path = DataSourceLayout;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -692,6 +720,7 @@
 			files = (
 				BAA5F10320BD4CC000F85816 /* NSString+IGListDiffable.m in Sources */,
 				BA938EAF20B7F6A900CCBE90 /* AAPLPlaceholderView.m in Sources */,
+				E3F6D19320F73DBF008F5867 /* InboxNoContentView.m in Sources */,
 				BA938EB120B7F6A900CCBE90 /* AAPLSegmentedHeaderView.m in Sources */,
 				BA938EA320B7F6A900CCBE90 /* AAPLCollectionViewLayout_Internal.m in Sources */,
 				BA938EA820B7F6A900CCBE90 /* AAPLSwipeToEditController.m in Sources */,
@@ -707,6 +736,7 @@
 				BA938EC420B8037400CCBE90 /* InboxDataLoader.mm in Sources */,
 				BA938E9D20B7F6A900CCBE90 /* AAPLDataSourceMapping.m in Sources */,
 				BA938E9B20B7F6A900CCBE90 /* AAPLComposedDataSource.m in Sources */,
+				E30DFF6620F889CB0008761B /* InboxSectionHeaderView.m in Sources */,
 				BAA5F10220BD4CC000F85816 /* NSNumber+IGListDiffable.m in Sources */,
 				BA938EB220B7F6A900CCBE90 /* AAPLTextValueCell.m in Sources */,
 				55B6B94420E887DE00E89CFA /* InboxDataSourceChangeSet.mm in Sources */,
@@ -720,7 +750,7 @@
 				BA938E9420B7F6A900CCBE90 /* AAPLDebug.m in Sources */,
 				BAA5F10120BD4CC000F85816 /* IGListMoveIndexPath.m in Sources */,
 				BA938E1A20B7F68900CCBE90 /* main.m in Sources */,
-				BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellItem.m in Sources */,
+				BA938EC920B80F5300CCBE90 /* InboxCollectionViewCellModel.m in Sources */,
 				BA4E54C520BCF04000380F56 /* TSHelper.m in Sources */,
 				BA938EA620B7F6A900CCBE90 /* AAPLShadowRegistrar.m in Sources */,
 				BA6547AD20DA3B9600FDB314 /* InboxLoadingView.m in Sources */,
@@ -745,6 +775,8 @@
 				BA938EA020B7F6A900CCBE90 /* AAPLSegmentedDataSource.m in Sources */,
 				BA938E9220B7F6A900CCBE90 /* AAPLAction.m in Sources */,
 				BA938E9620B7F6A900CCBE90 /* AAPLTheme.m in Sources */,
+				E3F6D19F20F7605C008F5867 /* InboxCellLayout.mm in Sources */,
+				E3F6D19620F74261008F5867 /* InboxErrorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

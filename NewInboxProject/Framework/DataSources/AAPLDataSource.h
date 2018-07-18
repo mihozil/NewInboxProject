@@ -179,6 +179,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable AAPLSupplementaryItem *)headerForKey:(NSString *)key;
 /// Create a new header and append it to the collection of data source headers.
 - (AAPLSupplementaryItem *)newHeaderForKey:(NSString *)key;
+// minhnht changed
+- (void)removeAllHeaders;
+- (void)createNewHeaderForKey:(id)key withTitle:(NSString*)title;
 /// Remove a data source header specified by its key.
 - (void)removeHeaderForKey:(NSString *)key;
 /// Replace a data source header specified by its key with a new header with the same key.

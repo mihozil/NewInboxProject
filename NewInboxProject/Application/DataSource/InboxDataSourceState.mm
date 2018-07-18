@@ -8,7 +8,7 @@
 
 #import "InboxDataSourceState.h"
 #import "InboxDataSourceItem.h"
-#import "InboxCollectionViewCellItem.h"
+#import "InboxCollectionViewCellModel.h"
 
 NSString *const InboxSectionChat = @"InboxSectionChat";
 NSString *const InboxSectionAddFriend = @"InboxSectionAddFriend";
@@ -58,8 +58,8 @@ NSString *const InboxSectionAddFriend = @"InboxSectionAddFriend";
     NSMutableArray *selects = [NSMutableArray new];
     for (NSArray *section in self.sections) {
         for (InboxDataSourceItem *datasourceItem in section) {
-            if ([datasourceItem.item isKindOfClass:[InboxCollectionViewCellItem class]]) {
-                InboxCollectionViewCellItem *item = datasourceItem.item;
+            if ([datasourceItem.model isKindOfClass:[InboxCollectionViewCellModel class]]) {
+                InboxCollectionViewCellModel *item = datasourceItem.model;
                 
                 if (item.selectingInEditingState) {
                     NSInteger sectionIndex = [self.sections indexOfObject:section];
